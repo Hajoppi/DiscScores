@@ -18,7 +18,7 @@ export default class TrackTransformer extends Transformer {
   static fetch(track) {
     return {
       name: track.name,
-      tracks: track.tracks,
+      holes: track.holes,
     };
   }
 
@@ -32,7 +32,7 @@ export default class TrackTransformer extends Transformer {
   static send(track) {
     return {
       name: track.name,
-      tracks: track.tracks,
+      holes: track.holes,
     };
   }
 }

@@ -7,9 +7,9 @@
  */
 
 
-export const INCREMENT = 'INCREMENT';
-export const DECREMENT = 'DECREMENT';
+export const ALL = 'ALL';
+export const SELECT = 'SELECT';
 export default {
-  INCREMENT,
-  DECREMENT,
+  ALL,
+  SELECT,
 };

@@ -6,20 +6,17 @@
  * account module.
  */
 
-import Vue from 'vue';
 import {
-  INCREMENT,
-  DECREMENT,
+  ALL,
+  SELECT,
 } from './mutation-types';
 
 export default {
-  [INCREMENT](state, index) {
-    Vue.set(state.holes, index, state.holes[index] + 1);
+  [ALL](state, tracks) {
+    state.tracks = tracks;
   },
 
-  [DECREMENT](state, index) {
-    if (state.holes[index] > 0) {
-      Vue.set(state.holes, index, state.holes[index] - 1);
-    }
+  [SELECT](state, index) {
+    state.selectedTrack = state.tracks[index];
   },
 };

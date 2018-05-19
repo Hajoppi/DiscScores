@@ -1,6 +1,6 @@
 <template>
   <div class="track">
-    <h4 :class="classNamesHeader" v-text="track">
+    <h4 :class="classNamesHeader" v-text="track.name">
     </h4>
     <div class="card-body" >
       <slot name="body"></slot>
@@ -55,15 +55,15 @@
      * The computed properties that the component can use.
      */
     computed: {
-      holes() {
-        return this.$store.state.track.holes;
-      },
       track() {
-        return this.$store.state.track.name;
+        return this.$store.state.track.selectedTrack;
+      },
+      holes() {
+        return this.track.holes;
       },
 
       total() {
-        return this.$store.state.track.holes.length;
+        return this.holes.length;
       },
 
       classNamesHeader() {

@@ -7,17 +7,32 @@
  */
 
 
+// import TrackProxy from '@/proxies/TrackProxy';
+import TrackTransformer from '@/transformers/TrackTransformer';
 import * as types from './mutation-types';
 
-export const increment = ({ commit }, index) => {
-  commit(types.INCREMENT, index);
+export const all = ({ commit }) => {
+  /* new TrackProxy('/tracks').then((response) => {
+    commit(types.ALL, TrackTransformer.fetchCollection(response));
+  }); */
+  const tracks = [
+    {
+      name: '1st track',
+      holes: [3, 3, 4, 3, 3, 3, 2, 4, 3, 3, 3, 5, 3, 3, 5, 3, 4, 3],
+    },
+    {
+      name: '2nd track',
+      holes: [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
+    },
+  ];
+  commit(types.ALL, TrackTransformer.fetchCollection(tracks));
 };
 
-export const decrement = ({ commit }, index) => {
-  commit(types.DECREMENT, index);
+export const select = ({ commit }, index) => {
+  commit(types.SELECT, index);
 };
 
 export default {
-  increment,
-  decrement,
+  all,
+  select,
 };
