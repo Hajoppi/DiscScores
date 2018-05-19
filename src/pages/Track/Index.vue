@@ -1,6 +1,13 @@
 <template>
   <v-layout>
-    <button><router-link :to="{ name: 'track.index' }">Track List</router-link></button>
+    <div v-for="track in tracks">
+      <v-track-card contextual-style="dark" :track=track>
+        <span slot="header">
+        </span>
+        <div slot="body"></div>
+        <div slot="footer"></div>
+      </v-track-card>
+    </div>
   </v-layout>
 </template>
 
@@ -21,6 +28,12 @@
      * The name of the page.
      */
     name: 'home-index',
+
+    computed: {
+      tracks() {
+        return this.$store.state.track.tracks;
+      },
+    },
 
     /**
      * The components that the page can use.

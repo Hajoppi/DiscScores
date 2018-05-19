@@ -54,6 +54,17 @@ export default [
     },
   },
 
+  // Track
+  {
+    path: '/track',
+    name: 'track.index',
+    component: () => import('@/pages/Track/Index.vue'),
+
+    meta: {
+      auth: true,
+    },
+  },
+
   {
     path: '/',
     redirect: '/home',

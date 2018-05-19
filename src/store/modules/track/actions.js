@@ -24,6 +24,10 @@ export const all = ({ commit }) => {
       name: '2nd track',
       holes: [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
     },
+    {
+      name: '3rd track',
+      holes: [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4],
+    },
   ];
   commit(types.ALL, TrackTransformer.fetchCollection(tracks));
 };

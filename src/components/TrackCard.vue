@@ -7,7 +7,6 @@
       <ul>
         <li v-for="(hole, index) in holes">
           Par {{hole}}
-          <button @click="increment(index)">+</button> <button @click="decrement(index)">-</button>
         </li>
       </ul>
 
@@ -48,6 +47,7 @@
         type: String,
         required: false,
       },
+      track: null,
     },
 
 
@@ -55,9 +55,6 @@
      * The computed properties that the component can use.
      */
     computed: {
-      track() {
-        return this.$store.state.track.selectedTrack;
-      },
       holes() {
         return this.track.holes;
       },
