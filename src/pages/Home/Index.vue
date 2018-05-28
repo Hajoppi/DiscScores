@@ -1,6 +1,7 @@
 <template>
   <v-layout>
     <button><router-link :to="{ name: 'track.index' }">Track List</router-link></button>
+    
   </v-layout>
 </template>
 
@@ -11,15 +12,14 @@
    *
    * The home index page.
    */
-
   import VLayout from '@/layouts/Default';
   import VCard from '@/components/Card';
   import VTrackCard from '@/components/TrackCard';
 
   export default {
-    /**
-     * The name of the page.
-     */
+  /**
+   * The name of the page.
+   */
     name: 'home-index',
 
     /**
@@ -30,5 +30,5 @@
       VCard,
       VTrackCard,
     },
-  };
+};
 </script>

@@ -64,6 +64,16 @@ export default [
       auth: true,
     },
   },
+  {
+    path: '/track/new',
+    name: 'track.new_track',
+    component: () => import('@/pages/Track/CreateTrack.vue'),
+
+    meta: {
+      auth: true,
+    },
+  },
+
 
   {
     path: '/',

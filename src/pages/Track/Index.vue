@@ -1,13 +1,14 @@
 <template>
   <v-layout>
-    <div v-for="track in tracks">
+    <button><router-link :to="{ name: 'track.new_track' }">Create new</router-link></button>
+    <span v-for="track in tracks">
       <v-track-card contextual-style="dark" :track=track>
         <span slot="header">
         </span>
         <div slot="body"></div>
         <div slot="footer"></div>
       </v-track-card>
-    </div>
+    </span>
   </v-layout>
 </template>
 

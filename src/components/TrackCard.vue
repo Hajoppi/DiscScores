@@ -75,14 +75,8 @@
         return classNames;
       },
     },
-    methods: {
-      increment(index) {
-        this.$store.dispatch('track/increment', index);
-      },
 
-      decrement(index) {
-        this.$store.dispatch('track/decrement', index);
-      },
+    methods: {
     },
   };
 </script>
