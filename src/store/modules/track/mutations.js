@@ -9,6 +9,7 @@
 import {
   ALL,
   SELECT,
+  SAVE,
 } from './mutation-types';
 
 export default {
@@ -18,5 +19,9 @@ export default {
 
   [SELECT](state, index) {
     state.selectedTrack = state.tracks[index];
+  },
+
+  [SAVE](state, track) {
+    state.tracks.push(track);
   },
 };

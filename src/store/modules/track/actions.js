@@ -6,10 +6,12 @@
  * track module.
  */
 
+import Vue from 'vue';
 
 // import TrackProxy from '@/proxies/TrackProxy';
 import TrackTransformer from '@/transformers/TrackTransformer';
 import * as types from './mutation-types';
+
 
 export const all = ({ commit }) => {
   /* new TrackProxy('/tracks').then((response) => {
@@ -20,14 +22,6 @@ export const all = ({ commit }) => {
       name: '1st track',
       holes: [3, 3, 4, 3, 3, 3, 2, 4, 3, 3, 3, 5, 3, 3, 5, 3, 4, 3],
     },
-    {
-      name: '2nd track',
-      holes: [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
-    },
-    {
-      name: '3rd track',
-      holes: [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4],
-    },
   ];
   commit(types.ALL, TrackTransformer.fetchCollection(tracks));
 };
@@ -36,7 +30,19 @@ export const select = ({ commit }, index) => {
   commit(types.SELECT, index);
 };
 
+export const save = ({ commit }, track) => {
+  /* new TrackProxy('/tracks').save(track).then((response) => {
+    commit(types.SAVE, TrackTransformer.fetchCollection(response));
+  }); */
+  commit(types.SAVE, TrackTransformer.fetch(track));
+
+  Vue.router.push({
+    name: 'track.index',
+  });
+};
+
 export default {
   all,
   select,
+  save,
 };

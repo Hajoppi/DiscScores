@@ -9,7 +9,9 @@
 
 export const ALL = 'ALL';
 export const SELECT = 'SELECT';
+export const SAVE = 'SAVE';
 export default {
   ALL,
   SELECT,
+  SAVE,
 };

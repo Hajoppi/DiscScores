@@ -15,6 +15,8 @@
           <button @click="increment(index)">+</button> <button @click="decrement(index)">-</button>
         </div>
       </div>
+
+      <button @click="save">Save</button>
     </form>
   </v-layout>
 </template>
@@ -56,6 +58,10 @@
       },
       delField() {
         this.holes.pop();
+      },
+      save() {
+        this.$store.dispatch('track/save', { name: this.name, holes: this.holes });
+        this.$router.go('track.index');
       },
     },
 

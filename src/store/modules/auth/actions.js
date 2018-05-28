@@ -28,9 +28,6 @@ export const register = ({ commit }) => {
    *  });
    */
   commit(types.LOGIN, 'RandomGeneratedToken');
-  Vue.router.push({
-    name: 'home.index',
-  });
 };
 
 export const login = ({ commit }) => {
