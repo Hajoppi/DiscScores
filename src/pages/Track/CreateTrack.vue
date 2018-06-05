@@ -61,7 +61,6 @@
       },
       save() {
         this.$store.dispatch('track/save', { name: this.name, holes: this.holes });
-        this.$router.go('track.index');
       },
     },
 
