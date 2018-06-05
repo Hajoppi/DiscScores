@@ -21,12 +21,15 @@
      * Fires when the app has been mounted.
      */
     mounted() {
+      this.$store.subscribe((mutation, state) => {
+        localStorage.setItem('store', JSON.stringify(state));
+      });
       // If the user is authenticated,
       // fetch the data from the API
       if (this.$store.state.auth.authenticated) {
         this.$store.dispatch('account/find');
       }
-      this.$store.dispatch('track/all');
+      // this.$store.dispatch('track/all');
     },
   };
 </script>

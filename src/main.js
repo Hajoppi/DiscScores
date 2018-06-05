@@ -51,7 +51,7 @@ import App from './App';
 import store from './store';
 
 Vue.config.productionTip = false;
-
+store.commit('initStore');
 store.dispatch('auth/check');
 
 /* eslint-disable no-new */

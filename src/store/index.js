@@ -22,6 +22,18 @@ Vue.use(Vuex);
 const debug = process.env.NODE_ENV !== 'production';
 
 export default new Vuex.Store({
+
+  mutations: {
+    initStore(state) {
+      // Check if the ID exists
+      if (localStorage.getItem('store')) {
+        // Replace the state object with the stored item
+        this.replaceState(
+          Object.assign(state, JSON.parse(localStorage.getItem('store'))),
+        );
+      }
+    },
+  },
   /**
    * Assign the modules to the store.
    */
