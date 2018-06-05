@@ -1,7 +1,7 @@
 <template>
   <v-layout>
     <button><router-link :to="{ name: 'track.index' }">Track List</router-link></button>
-    
+    <button><router-link :to="{ name: 'track.start_game' }">Start Game</router-link></button>
   </v-layout>
 </template>
 

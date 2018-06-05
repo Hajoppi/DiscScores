@@ -74,6 +74,26 @@ export default [
     },
   },
 
+  {
+    path: '/track/start',
+    name: 'track.start_game',
+    component: () => import('@/pages/Track/SelectTrack.vue'),
+
+    meta: {
+      auth: true,
+    },
+  },
+
+  {
+    path: '/track/game',
+    name: 'track.game',
+    component: () => import('@/pages/Track/Game.vue'),
+
+    meta: {
+      auth: true,
+    },
+  },
+
 
   {
     path: '/',

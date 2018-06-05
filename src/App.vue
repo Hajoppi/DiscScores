@@ -27,7 +27,6 @@
         this.$store.dispatch('account/find');
       }
       this.$store.dispatch('track/all');
-      this.$store.dispatch('track/select', 0);
     },
   };
 </script>

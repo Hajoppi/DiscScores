@@ -15,6 +15,7 @@ import createLogger from 'vuex/dist/logger';
 import account from './modules/account';
 import auth from './modules/auth';
 import track from './modules/track';
+import player from './modules/player';
 
 Vue.use(Vuex);
 
@@ -28,6 +29,7 @@ export default new Vuex.Store({
     account,
     auth,
     track,
+    player,
   },
 
   /**

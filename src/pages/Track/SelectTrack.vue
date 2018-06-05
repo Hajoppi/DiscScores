@@ -1,14 +1,7 @@
 <template>
   <v-layout>
-    <button><router-link :to="{ name: 'track.new_track' }">Create new</router-link></button>
-    
-    <span v-for="track in tracks">
-      <v-track-card contextual-style="dark" :track=track>
-        <span slot="header">
-        </span>
-        <div slot="body"></div>
-        <div slot="footer"></div>
-      </v-track-card>
+    <span v-for="(track, index) in tracks">
+      {{track.name}}<button @click="select(index)"><router-link :to="{ name: 'track.game' }">Select</router-link></button>
     </span>
   </v-layout>
 </template>
@@ -22,18 +15,23 @@
    */
 
   import VLayout from '@/layouts/Default';
-  import VCard from '@/components/Card';
   import VTrackCard from '@/components/TrackCard';
 
   export default {
     /**
      * The name of the page.
      */
-    name: 'home-index',
+    name: 'select-track',
 
     computed: {
       tracks() {
         return this.$store.state.track.tracks;
+      },
+    },
+
+    methods: {
+      select(index) {
+        this.$store.dispatch('track/select', index);
       },
     },
 
@@ -42,7 +40,6 @@
      */
     components: {
       VLayout,
-      VCard,
       VTrackCard,
     },
   };
