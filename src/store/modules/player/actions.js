@@ -7,32 +7,42 @@
  */
 
 import Vue from 'vue';
-
+import store from '@/store';
 // import TrackProxy from '@/proxies/TrackProxy';
 import PlayerTransformer from '@/transformers/PlayerTransformer';
 import * as types from './mutation-types';
 
 
 export const all = ({ commit }) => {
-  /* new TrackProxy('/tracks').then((response) => {
-    commit(types.ALL, TrackTransformer.fetchCollection(response));
+  /* new PlayerProxy('/players').then((response) => {
+    commit(types.ALL, PlayerTransformer.fetchCollection(response));
   }); */
   const players = [
     {
-      name: 'name',
+      name: 'petri',
+      scores: [],
+    },
+    {
+      name: 'tuomas',
+      scores: [],
+    },
+    {
+      name: 'juuso',
+      scores: [],
+    },
+    {
+      name: 'eero',
       scores: [],
     },
   ];
-  commit(types.ALL, PlayerTransformer.fetchCollection(players));
-};
 
-export const select = ({ commit }, index) => {
-  commit(types.SELECT, index);
+  commit(types.ALL, PlayerTransformer.fetchCollection(players));
+  commit(types.UPDATE, store.state.track.selectedTrack);
 };
 
 export const save = ({ commit }, track) => {
-  /* new TrackProxy('/tracks').save(track).then((response) => {
-    commit(types.SAVE, TrackTransformer.fetchCollection(response));
+  /* new PlayerProxy('/players').save(track).then((response) => {
+    commit(types.SAVE, PlayerTransformer.fetchCollection(response));
   }); */
   commit(types.SAVE, PlayerTransformer.fetch(track));
 
@@ -43,6 +53,5 @@ export const save = ({ commit }, track) => {
 
 export default {
   all,
-  select,
   save,
 };

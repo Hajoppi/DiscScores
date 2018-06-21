@@ -28,6 +28,10 @@
      */
     name: 'game',
 
+    mounted() {
+      this.$store.dispatch('player/all');
+    },
+
     computed: {
     },
 
@@ -53,20 +57,7 @@
       return {
         track: this.$store.state.track.selectedTrack,
         currentHole: 0,
-        playerScores: [
-          { name: 'petri',
-            scores: this.$store.state.track.selectedTrack.holes.slice(0),
-          },
-          { name: 'tuomas',
-            scores: this.$store.state.track.selectedTrack.holes.slice(0),
-          },
-          { name: 'juuso',
-            scores: this.$store.state.track.selectedTrack.holes.slice(0),
-          },
-          { name: 'tutka',
-            scores: this.$store.state.track.selectedTrack.holes.slice(0),
-          },
-        ],
+        playerScores: this.$store.state.player.players,
       };
     },
 

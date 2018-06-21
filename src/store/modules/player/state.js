@@ -6,6 +6,5 @@
  */
 
 export default {
-  tracks: [],
-  selectedTrack: false,
+  players: [],
 };

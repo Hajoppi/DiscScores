@@ -1,27 +1,29 @@
 /* ============
- * Mutations for the auth module
+ * Mutations for the player module
  * ============
  *
  * The mutations that are available on the
- * account module.
+ * player module.
  */
 
 import {
   ALL,
-  SELECT,
+  UPDATE,
   SAVE,
 } from './mutation-types';
 
 export default {
-  [ALL](state, tracks) {
-    state.tracks = tracks;
+  [ALL](state, players) {
+    state.players = players;
   },
 
-  [SELECT](state, index) {
-    state.selectedTrack = state.tracks[index];
+  [UPDATE](state, track) {
+    state.players.forEach((x) => {
+      x.scores = track.holes.slice(0);
+    });
   },
 
-  [SAVE](state, track) {
-    state.tracks.push(track);
+  [SAVE](state, player) {
+    state.players.push(player);
   },
 };

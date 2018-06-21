@@ -18,7 +18,7 @@ export default class PlayerTransformer extends Transformer {
   static fetch(player) {
     return {
       name: player.name,
-      holes: player.holes,
+      scores: player.scores,
     };
   }
 
@@ -32,7 +32,7 @@ export default class PlayerTransformer extends Transformer {
   static send(player) {
     return {
       name: player.name,
-      holes: player.holes,
+      scores: player.scores,
     };
   }
 }
