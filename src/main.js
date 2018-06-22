@@ -21,6 +21,7 @@ import { router } from './plugins/vue-router';
 import './plugins/vuex-router-sync';
 import './plugins/bootstrap';
 import './plugins/font-awesome';
+import './plugins/bulma';
 
 /* ============
  * Styling
@@ -38,7 +39,7 @@ import './plugins/font-awesome';
  * http://stylus-lang.com/
  */
 
-import './assets/stylus/app.styl';
+import './assets/sass/main.scss';
 
 /* ============
  * Main App

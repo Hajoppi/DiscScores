@@ -1,8 +1,16 @@
 <template>
   <v-layout>
-    <span v-for="(track, index) in tracks">
-      {{track.name}}<button @click="select(index)"><router-link :to="{ name: 'track.game' }">Select</router-link></button>
+    <span v-for="(player) in players">
+      <div class="field">
+        <input class="is-checkradio" :value=player type="checkbox" :id="player.name" v-model="checkedNames" :name=player.name>
+        <label for="exampleCheckboxDefault">{{player.name}}</label>
+      </div>
     </span>
+    <span v-for="(track, index) in tracks">
+      <p>{{track.name}}<button @click="select(index)"><router-link :to="{ name: 'game.game' }">Select</router-link></button></p>
+    </span>
+
+
   </v-layout>
 </template>
 
@@ -27,12 +35,22 @@
       tracks() {
         return this.$store.state.track.tracks;
       },
+      players() {
+        return this.$store.state.player.players;
+      },
     },
 
     methods: {
       select(index) {
         this.$store.dispatch('track/select', index);
+        this.$store.dispatch('game/start', this.checkedNames);
       },
+    },
+
+    data() {
+      return {
+        checkedNames: [],
+      };
     },
 
     /**

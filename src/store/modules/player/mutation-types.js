@@ -8,10 +8,10 @@
 
 
 export const ALL = 'ALL';
-export const SAVE = 'SAVE';
-export const UPDATE = 'UPDATE';
+export const ADD = 'ADD';
+export const REMOVE = 'REMOVE';
 export default {
   ALL,
-  SAVE,
-  UPDATE,
+  ADD,
+  REMOVE,
 };

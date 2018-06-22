@@ -5,11 +5,10 @@
  * The mutations that are available on the
  * player module.
  */
-
 import {
   ALL,
-  UPDATE,
-  SAVE,
+  ADD,
+  REMOVE,
 } from './mutation-types';
 
 export default {
@@ -17,13 +16,18 @@ export default {
     state.players = players;
   },
 
-  [UPDATE](state, track) {
-    state.players.forEach((x) => {
-      x.scores = track.holes.slice(0);
-    });
+  [ADD](state, player) {
+    if (player.name !== '') {
+      state.players.push(player);
+    }
   },
 
-  [SAVE](state, player) {
-    state.players.push(player);
+  [REMOVE](state, player) {
+    for (let i = 0; i < state.players.length; i += 1) {
+      if (state.players[i].name === player.name) {
+        state.players.splice(i, 1);
+        break;
+      }
+    }
   },
 };

@@ -22,4 +22,4 @@ class PlayerProxy extends Proxy {
   }
 }
 
-export default TrackProxy;
+export default PlayerProxy;

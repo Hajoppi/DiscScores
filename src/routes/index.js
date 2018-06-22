@@ -73,11 +73,10 @@ export default [
       auth: true,
     },
   },
-
   {
-    path: '/track/start',
-    name: 'track.start_game',
-    component: () => import('@/pages/Track/SelectTrack.vue'),
+    path: '/game/start',
+    name: 'game.start_game',
+    component: () => import('@/pages/Game/SelectTrack.vue'),
 
     meta: {
       auth: true,
@@ -85,15 +84,25 @@ export default [
   },
 
   {
-    path: '/track/game',
-    name: 'track.game',
-    component: () => import('@/pages/Track/Game.vue'),
+    path: '/game/game',
+    name: 'game.game',
+    component: () => import('@/pages/Game/Game.vue'),
 
     meta: {
       auth: true,
     },
   },
 
+  // Player
+  {
+    path: '/players',
+    name: 'player.index',
+    component: () => import('@/pages/Player/Index.vue'),
+
+    meta: {
+      auth: true,
+    },
+  },
 
   {
     path: '/',

@@ -16,6 +16,7 @@ import account from './modules/account';
 import auth from './modules/auth';
 import track from './modules/track';
 import player from './modules/player';
+import game from './modules/game';
 
 Vue.use(Vuex);
 
@@ -42,6 +43,7 @@ export default new Vuex.Store({
     auth,
     track,
     player,
+    game,
   },
 
   /**

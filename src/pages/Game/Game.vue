@@ -3,10 +3,10 @@
     <p> Current hole {{currentHole+1}} <p>
     <button @click="previousHole">Previous</button>
     <button @click="nextHole">Next</button>
-    <div v-for="(player, index) in playerScores">
+    <div v-for="player in playerScores">
       {{player.name}} {{player.scores[currentHole]}} 
-    <button @click="decrement(player.scores)">-</button>
-    <button @click="increment(player.scores)">+</button>
+    <button @click="decrement(player)">-</button>
+    <button @click="increment(player)">+</button>
     </div>
     <button @click="save()">Save</button>
   </v-layout>
@@ -28,36 +28,39 @@
      */
     name: 'game',
 
-    mounted() {
-      this.$store.dispatch('player/all');
-    },
-
     computed: {
+      currentHole() {
+        return this.$store.state.game.currentHole;
+      },
+      track() {
+        return this.$store.state.track.selectedTrack;
+      },
+      playerScores() {
+        return this.$store.state.game.players;
+      },
     },
 
     methods: {
-      increment(scores) {
-        this.$set(scores, this.currentHole, scores[this.currentHole] + 1);
+      increment(player) {
+        this.$store.dispatch('game/increment', player);
       },
 
-      decrement(scores) {
-        this.$set(scores, this.currentHole, scores[this.currentHole] - 1);
+      decrement(player) {
+        this.$store.dispatch('game/decrement', player);
       },
 
       nextHole() {
-        if (this.currentHole < this.track.holes.length - 1) this.currentHole += 1;
+        this.$store.dispatch('game/nextHole');
       },
 
       previousHole() {
-        if (this.currentHole > 0) this.currentHole -= 1;
+        this.$store.dispatch('game/previousHole');
       },
     },
 
     data() {
       return {
-        track: this.$store.state.track.selectedTrack,
-        currentHole: 0,
-        playerScores: this.$store.state.player.players,
+
       };
     },
 

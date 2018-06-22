@@ -6,52 +6,31 @@
  * track module.
  */
 
-import Vue from 'vue';
-import store from '@/store';
-// import TrackProxy from '@/proxies/TrackProxy';
+// import Vue from 'vue';
+import PlayerProxy from '@/proxies/PlayerProxy';
 import PlayerTransformer from '@/transformers/PlayerTransformer';
 import * as types from './mutation-types';
 
 
 export const all = ({ commit }) => {
-  /* new PlayerProxy('/players').then((response) => {
+  new PlayerProxy('/players').then((response) => {
     commit(types.ALL, PlayerTransformer.fetchCollection(response));
-  }); */
-  const players = [
-    {
-      name: 'petri',
-      scores: [],
-    },
-    {
-      name: 'tuomas',
-      scores: [],
-    },
-    {
-      name: 'juuso',
-      scores: [],
-    },
-    {
-      name: 'eero',
-      scores: [],
-    },
-  ];
-
-  commit(types.ALL, PlayerTransformer.fetchCollection(players));
-  commit(types.UPDATE, store.state.track.selectedTrack);
+  });
 };
 
-export const save = ({ commit }, track) => {
+export const add = ({ commit }, player) => {
   /* new PlayerProxy('/players').save(track).then((response) => {
     commit(types.SAVE, PlayerTransformer.fetchCollection(response));
   }); */
-  commit(types.SAVE, PlayerTransformer.fetch(track));
+  commit(types.ADD, PlayerTransformer.fetch(player));
+};
 
-  Vue.router.push({
-    name: 'track.index',
-  });
+export const remove = ({ commit }, player) => {
+  commit(types.REMOVE, PlayerTransformer.fetch(player));
 };
 
 export default {
   all,
-  save,
+  add,
+  remove,
 };
