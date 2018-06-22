@@ -18,6 +18,7 @@ import {
 export default {
 
   [START](state, players) {
+    state.currentHole = 0;
     state.players = players;
     state.players.forEach((x) => {
       x.scores = this.state.track.selectedTrack.holes.slice(0);
