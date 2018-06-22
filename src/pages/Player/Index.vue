@@ -1,12 +1,13 @@
 <template>
   <v-layout>
     <div class="control">
-      <input class="input" v-model="newName" type="text" placeholder="Player"><Button @click="addPlayer">Add</Button>
+      <input class="input" v-model="newName" type="text" placeholder="Player"><Button class="button" @click="addPlayer">Add</Button>
     </div>
-    
-    <span v-for="player in players">
-      <p>{{player.name}}<Button @click="removePlayer(player)">Remove</Button></p>
-    </span>
+    <table>
+      <tr v-for="player in players">
+        <td>{{player.name}}</td><td><Button class="button" @click="removePlayer(player)">Remove</Button></td>
+      </tr>
+    </table>
   </v-layout>
 </template>
 

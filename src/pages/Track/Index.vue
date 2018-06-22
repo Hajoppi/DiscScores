@@ -1,6 +1,6 @@
 <template>
   <v-layout>
-    <button><router-link :to="{ name: 'track.new_track' }">Create new</router-link></button>
+    <button class="button"><router-link :to="{ name: 'track.new_track' }">Create new</router-link></button>
     
     <span v-for="track in tracks">
       <v-track-card contextual-style="dark" :track=track>

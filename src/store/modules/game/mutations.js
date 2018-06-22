@@ -26,13 +26,11 @@ export default {
   },
 
   [INCREMENT](state, player) {
-    const scores = player.scores;
-    Vue.set(scores, state.currentHole, scores[state.currentHole] + 1);
+    Vue.set(player.scores, state.currentHole, player.scores[state.currentHole] + 1);
   },
 
   [DECREMENT](state, player) {
-    const scores = player.scores;
-    Vue.set(scores, state.currentHole, scores[state.currentHole] - 1);
+    Vue.set(player.scores, state.currentHole, player.scores[state.currentHole] - 1);
   },
 
   [PREVIOUS](state) {

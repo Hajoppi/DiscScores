@@ -1,16 +1,19 @@
 <template>
   <v-layout>
-    <span v-for="(player) in players">
-      <div class="field">
-        <input class="is-checkradio" :value=player type="checkbox" :id="player.name" v-model="checkedNames" :name=player.name>
-        <label for="exampleCheckboxDefault">{{player.name}}</label>
-      </div>
-    </span>
-    <span v-for="(track, index) in tracks">
-      <p>{{track.name}}<button @click="select(index)"><router-link :to="{ name: 'game.game' }">Select</router-link></button></p>
-    </span>
-
-
+    <table>
+      <tr v-for="(player) in players">
+        <div class="field">
+          <td><input class="is-checkradio" :value=player type="checkbox" :id="player.name" v-model="checkedNames" :name=player.name></td>
+          <td><label for="exampleCheckboxDefault">{{player.name}}</label></td>
+        </div>
+      </tr>
+    </table>
+    <table>
+    <tr v-for="(track, index) in tracks">
+      <td>{{track.name}}</td>
+        <td><button class="button" @click="select(index)"> <router-link :to="{ name: 'game.game' }">Select</router-link></button></td>
+    </tr>
+    </table>
   </v-layout>
 </template>
 
