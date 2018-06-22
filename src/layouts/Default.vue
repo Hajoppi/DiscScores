@@ -5,7 +5,7 @@
         class="navbar-brand"
         :to="{ name: 'home.index' }"
       >
-        Vue 2 Boilerplate
+        Disc Scores
       </router-link>
 
       <button

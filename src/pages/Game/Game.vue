@@ -5,7 +5,7 @@
     <button class="button" @click="nextHole">Next</button>
     <table class="table is-fullwidth">
       <tr v-for="player in playerScores">
-        <td>{{player.name}} ({{currentScore(player)}})</td> <td>{{player.scores[currentHole]}} </td> 
+        <td>{{player.name}} ({{currentScore(player)}})</td> <td>{{hole(player)}} </td> 
         <td><button class="button" @click="decrement(player)">-</button></td>
         <td><button class="button" @click="increment(player)">+</button></td>
       </tr>
@@ -54,9 +54,11 @@
       nextHole() {
         this.$store.dispatch('game/nextHole');
       },
-
       previousHole() {
         this.$store.dispatch('game/previousHole');
+      },
+      hole(player) {
+        return player.scores[this.currentHole];
       },
       currentScore(player) {
         const holes = this.$store.state.track.selectedTrack.holes;
