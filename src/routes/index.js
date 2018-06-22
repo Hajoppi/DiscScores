@@ -73,6 +73,8 @@ export default [
       auth: true,
     },
   },
+
+  // Game
   {
     path: '/game/start',
     name: 'game.start_game',
@@ -82,11 +84,19 @@ export default [
       auth: true,
     },
   },
-
   {
     path: '/game/game',
     name: 'game.game',
     component: () => import('@/pages/Game/Game.vue'),
+
+    meta: {
+      auth: true,
+    },
+  },
+  {
+    path: '/game/scores',
+    name: 'game.scores',
+    component: () => import('@/pages/Game/GameScores.vue'),
 
     meta: {
       auth: true,

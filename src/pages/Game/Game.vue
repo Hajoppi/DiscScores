@@ -10,7 +10,7 @@
         <td><button class="button" @click="increment(player)">+</button></td>
       </tr>
     </table>
-    <button class="button" @click="save()">Save</button>
+    <button class="button"><router-link :to="{ name: 'game.scores' }">Save</router-link></button>
   </v-layout>
 </template>
 

@@ -11,7 +11,7 @@
     <table>
     <tr v-for="(track, index) in tracks">
       <td>{{track.name}}</td>
-        <td><button class="button" @click="select(index)"> <router-link :to="{ name: 'game.game' }">Select</router-link></button></td>
+        <td><button class="button" @click="select(index)"><router-link :to="{ name: 'game.game' }">Select</router-link></button></td>
     </tr>
     </table>
   </v-layout>
