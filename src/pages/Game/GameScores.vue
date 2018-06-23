@@ -2,12 +2,12 @@
   <v-layout>
     <h1>{{track.name}}</h1>
     <p>{{new Date()}}</p>
-    <table class="table is-fullwidth">
+    <table class="table is-fullwidth is-bordered is-narrow">
       <tr>
         <th>Hole</th><th v-for="player in playerScores" v-text="player.name"></th>
       </tr>
       <tr v-for="(hole, index) in track.holes">
-        <td>{{index}} ({{hole}})</td><td v-for="player in playerScores" v-text="player.scores[index]"></td>
+        <td>{{index + 1}} ({{hole}})</td><td v-for="player in playerScores" v-text="player.scores[index]"></td>
       </tr>
       <tr>
         <td>{{totalPar(track.holes)}}</td><td v-for="player in playerScores">{{totalPar(player.scores)}} ({{currentScore(player)}})</td>
