@@ -1,7 +1,7 @@
 <template>
   <v-layout>
-    <h1>{{track.name}}</h1>
-    <p>{{new Date()}}</p>
+    <h1><b>{{track.name}}</b></h1>
+    <p>{{currentDate}}</p>
     <table class="table is-fullwidth is-bordered is-narrow">
       <tr>
         <th>Hole</th><th v-for="player in playerScores" v-text="player.name"></th>
@@ -39,6 +39,9 @@
       },
       playerScores() {
         return this.$store.state.game.players;
+      },
+      currentDate() {
+        return (new Date()).toString().split(' ', 5).join(' ');
       },
     },
 
