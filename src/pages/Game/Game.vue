@@ -1,11 +1,11 @@
 <template>
   <v-layout>
-    <p> Current hole {{currentHole+1}} </p>
+    <p> Current hole {{currentHole+1}}</p><p> Par {{track.holes[currentHole]}}</p>
     <button class="button" @click="previousHole">Previous</button>
     <button class="button" @click="nextHole">Next</button>
     <table class="table is-fullwidth">
       <tr v-for="player in playerScores">
-        <td>{{player.name}} ({{currentScore(player)}})</td> <td>{{hole(player)}} </td> 
+        <td>{{player.name}} ({{currentScore(player)}})</td> <td>{{hole(player)}}</td> 
         <td><button class="button" @click="decrement(player)">-</button></td>
         <td><button class="button" @click="increment(player)">+</button></td>
       </tr>
@@ -40,6 +40,7 @@
       playerScores() {
         return this.$store.state.game.players;
       },
+
     },
 
     methods: {
@@ -67,6 +68,9 @@
           res += player.scores[i] - holes[i];
         }
         return res;
+      },
+      holeScore(player) {
+        return player.scores[this.currentHole] - this.track.holes[this.currentHole];
       },
     },
 

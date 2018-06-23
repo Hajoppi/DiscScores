@@ -7,7 +7,8 @@
         <th>Hole</th><th v-for="player in playerScores" v-text="player.name"></th>
       </tr>
       <tr v-for="(hole, index) in track.holes">
-        <td>{{index + 1}} ({{hole}})</td><td v-for="player in playerScores" v-text="player.scores[index]"></td>
+        <td>{{index + 1}} ({{hole}})</td>
+        <td v-for="player in playerScores" :style="getBackground(player.scores[index], hole)" v-text="player.scores[index]"></td>
       </tr>
       <tr>
         <td>{{totalPar(track.holes)}}</td><td v-for="player in playerScores">{{totalPar(player.scores)}} ({{currentScore(player)}})</td>
@@ -50,6 +51,26 @@
         let res = 0;
         for (let i = 0; i < holes.length; i += 1) {
           res += player.scores[i] - holes[i];
+        }
+        return res;
+      },
+      getBackground(playerScore, holePar) {
+        const score = playerScore - holePar;
+        let res = 'background-color:';
+        if (score === 0) {
+          res += '#33cc33';
+        } else if (score === -1) {
+          res += '#0066ff';
+        } else if (score <= -2) {
+          res += '#99ccff';
+        } else if (score === 1) {
+          res += 'yellow';
+        } else if (score === 2) {
+          res += '#ff6600';
+        } else if (score > 2) {
+          res += 'red';
+        } else {
+          res += 'white';
         }
         return res;
       },
