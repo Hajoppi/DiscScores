@@ -1,6 +1,7 @@
 <template>
   <div class="track">
-    <h4 :class="classNamesHeader" v-text="track.name">
+    <h4 :class="classNamesHeader">
+      {{track.name}}<Button @click="removeTrack(track)" class="button">Remove</Button>
     </h4>
     <div class="card-body" >
       <slot name="body"></slot>
@@ -77,6 +78,9 @@
     },
 
     methods: {
+      removeTrack(track) {
+        this.$store.dispatch('track/remove', track);
+      },
     },
   };
 </script>

@@ -10,6 +10,7 @@ import {
   ALL,
   SELECT,
   SAVE,
+  REMOVE,
 } from './mutation-types';
 
 export default {
@@ -23,5 +24,14 @@ export default {
 
   [SAVE](state, track) {
     state.tracks.push(track);
+  },
+
+  [REMOVE](state, track) {
+    for (let i = 0; i < state.tracks.length; i += 1) {
+      if (state.tracks[i].name === track.name) {
+        state.tracks.splice(i, 1);
+        break;
+      }
+    }
   },
 };

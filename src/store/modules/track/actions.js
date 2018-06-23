@@ -41,8 +41,13 @@ export const save = ({ commit }, track) => {
   });
 };
 
+export const remove = ({ commit }, track) => {
+  commit(types.REMOVE, TrackTransformer.fetch(track));
+};
+
 export default {
   all,
   select,
   save,
+  remove,
 };
