@@ -3,7 +3,7 @@
     <table class="table">
       <tr v-for="player in players">
         <div class="field">
-          <td><input class="is-checkradio" :value=player type="checkbox" :id="player.name" v-model="checkedNames" :name=player.name></td>
+          <td><input class="is-checkradio is-block is-success" :value=player type="checkbox" :id="player.name" v-model="checkedNames" :name=player.name></td>
           <td><label for="exampleCheckboxDefault">{{player.name}}</label></td>
         </div>
       </tr>

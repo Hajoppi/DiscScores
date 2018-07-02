@@ -13,6 +13,8 @@ import {
   DECREMENT,
   PREVIOUS,
   NEXT,
+  SAVE,
+  REMOVE,
 } from './mutation-types';
 
 export default {
@@ -23,6 +25,24 @@ export default {
     state.players.forEach((x) => {
       x.scores = this.state.track.selectedTrack.holes.slice(0);
     });
+  },
+
+  [SAVE](state) {
+    const res = {
+      date: (new Date()).toString().split(' ', 5).join(' '),
+      playerScores: state.players,
+      trackName: this.state.track.selectedTrack.name,
+    };
+    this.state.game.pastGames.push(res);
+  },
+
+  [REMOVE](state, game) {
+    for (let i = 0; i < state.pastGames.length; i += 1) {
+      if (state.pastGames[i].date === game.date) {
+        state.pastGames.splice(i, 1);
+        break;
+      }
+    }
   },
 
   [INCREMENT](state, player) {

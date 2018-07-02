@@ -3,6 +3,7 @@
     <button class="button"><router-link :to="{ name: 'track.index' }">Track List</router-link></button>
     <button class="button"><router-link :to="{ name: 'game.start_game' }">Start Game</router-link></button>
     <button class="button"><router-link :to="{ name: 'player.index' }">Players</router-link></button>
+    <button class="button"><router-link :to="{ name: 'game.past_games' }">Past Games</router-link></button>
   </v-layout>
 </template>
 

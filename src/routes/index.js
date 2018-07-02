@@ -102,6 +102,14 @@ export default [
       auth: true,
     },
   },
+  {
+    path: '/game/past_games',
+    name: 'game.past_games',
+    component: () => import('@/pages/Game/PastGames.vue'),
+    meta: {
+      auth: true,
+    },
+  },
 
   // Player
   {

@@ -12,11 +12,14 @@ export const INCREMENT = 'INCREMENT';
 export const DECREMENT = 'DECREMENT';
 export const NEXT = 'NEXT';
 export const PREVIOUS = 'PREVIOUS';
-
+export const SAVE = 'SAVE';
+export const REMOVE = 'REMOVE';
 export default {
   START,
   INCREMENT,
   DECREMENT,
   NEXT,
   PREVIOUS,
+  SAVE,
+  REMOVE,
 };

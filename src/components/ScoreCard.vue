@@ -1,7 +1,8 @@
 <template>
-  <v-layout>
+  <div>
     <h1><b>{{track.name}}</b></h1>
-    <p>{{currentDate}}</p>
+    <p>{{currentDate}}<Button @click="removeGame()" class="button">Remove</Button></p>
+
     <table class="table is-narrow is-bordered" style="font-size:0.75em">
       <tr>
         <th>Hole</th><th v-for="player in playerScores" v-text="player.name"></th>
@@ -14,42 +15,78 @@
         <td>{{totalPar(track.holes)}}</td><td v-for="player in playerScores">{{totalPar(player.scores)}} ({{currentScore(player)}})</td>
       </tr>
     </table>
-    <button class="button" @click="saveGame"><router-link :to="{ name: 'home.index' }">Save</router-link></button>
-  </v-layout>
+</div>
 </template>
 
 <script>
   /* ============
-   * Game page
+   * ScoreCard Component
    * ============
    *
-   * The game page.
+   * A basic score card component.
+   *
    */
 
-  import VLayout from '@/layouts/Default';
+  import SlotMixin from '@/mixins/slot';
 
   export default {
     /**
-     * The name of the page.
+     * The name of the component.
      */
-    name: 'game-scores',
+    name: 'scoreCard',
 
+    /**
+     * The mixins that the component can use.
+     */
+    mixins: [
+      SlotMixin,
+    ],
+
+    /**
+     * The properties that the component accepts.
+     */
+    props: {
+      game: null,
+    },
+
+
+    /**
+     * The computed properties that the component can use.
+     */
     computed: {
       track() {
-        return this.$store.state.track.selectedTrack;
+        const tracks = this.$store.state.track.tracks;
+        for (let i = 0; i < tracks.length; i += 1) {
+          if (tracks[i].name === this.game.trackName) {
+            return tracks[i];
+          }
+        }
+        return {};
+      },
+      total() {
+        return this.holes.length;
       },
       playerScores() {
-        return this.$store.state.game.players;
+        return this.game.playerScores;
       },
       currentDate() {
         return (new Date()).toString().split(' ', 5).join(' ');
       },
+
+      classNamesHeader() {
+        const classNames = ['card-header'];
+        if (this.contextualStyle) {
+          classNames.push(`bg-${this.contextualStyle}`);
+          classNames.push('text-white');
+        } else {
+          classNames.push('bg-default');
+        }
+
+        return classNames;
+      },
     },
 
     methods: {
-      saveGame() {
-        this.$store.dispatch('game/save');
-      },
       totalPar(array) {
         return array.reduce((a, b) => a + b, 0);
       },
@@ -60,6 +97,9 @@
           res += player.scores[i] - holes[i];
         }
         return res;
+      },
+      removeGame() {
+        this.$store.dispatch('game/remove', this.game);
       },
       getBackground(playerScore, holePar) {
         const score = playerScore - holePar;
@@ -81,13 +121,6 @@
         }
         return res;
       },
-    },
-
-    /**
-     * The components that the page can use.
-     */
-    components: {
-      VLayout,
     },
   };
 </script>

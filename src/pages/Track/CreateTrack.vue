@@ -39,6 +39,10 @@
      */
     name: 'home-index',
 
+    mounted() {
+      this.holes = new Array(18).fill(3, 0);
+    },
+
     computed: {
       total() {
         return this.holes.length;
@@ -70,10 +74,6 @@
         name: '',
         holes: [],
       };
-    },
-
-    created() {
-      this.holes = new Array(18).fill(3, 0);
     },
     /**
      * The components that the page can use.

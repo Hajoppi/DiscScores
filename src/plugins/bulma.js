@@ -5,4 +5,5 @@
  * on Flexbox and used by more than 100,000 developers.
  * https://bulma.io/
  */
-import 'bulma/css/bulma.css';
+import 'bulma/bulma.sass';
+// import '~bulma-checkradio';

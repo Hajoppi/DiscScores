@@ -27,10 +27,19 @@ export const nextHole = ({ commit }) => {
 export const previousHole = ({ commit }) => {
   commit(types.PREVIOUS);
 };
+export const save = ({ commit }) => {
+  commit(types.SAVE);
+};
+export const remove = ({ commit }, game) => {
+  commit(types.REMOVE, game);
+};
+
 export default {
   start,
   increment,
   decrement,
   nextHole,
   previousHole,
+  save,
+  remove,
 };

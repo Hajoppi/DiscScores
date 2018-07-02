@@ -8,4 +8,5 @@
 export default {
   currentHole: 0,
   players: [],
+  pastGames: [],
 };
