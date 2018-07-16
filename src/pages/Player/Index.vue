@@ -1,11 +1,11 @@
 <template>
   <v-layout>
     <div class="control">
-      <input class="input" v-model="newName" type="text" placeholder="Player"><Button class="button" @click="addPlayer">Add</Button>
+      <input class="input" v-model="newName" type="text" placeholder="Player"><Button type="button" class="button" @click="addPlayer">Add</Button>
     </div>
     <table>
       <tr v-for="player in players">
-        <td>{{player.name}}</td><td><Button class="button" @click="removePlayer(player)">Remove</Button></td>
+        <td>{{player.name}}</td><td><Button type="button" class="button" @click="removePlayer(player)">Remove</Button></td>
       </tr>
     </table>
   </v-layout>

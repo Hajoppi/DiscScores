@@ -1,7 +1,7 @@
 <template>
   <div class="track">
     <h4 :class="classNamesHeader">
-      {{track.name}}<Button @click="removeTrack(track)" class="button">Remove</Button>
+      {{track.name}}<Button type="button" @click="removeTrack(track)" class="button">Remove</Button>
     </h4>
     <div class="card-body" >
       <slot name="body"></slot>
