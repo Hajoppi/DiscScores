@@ -1,15 +1,15 @@
 <template>
   <v-layout>
-    <button class="button"><router-link :to="{ name: 'track.new_track' }">Create new</router-link></button>
-    
-    <span v-for="track in tracks">
-      <v-track-card contextual-style="dark" :track=track>
-        <span slot="header">
-        </span>
-        <div slot="body"></div>
-        <div slot="footer"></div>
-      </v-track-card>
-    </span>
+    <div class="container">
+      <div class="columns is-multiline">
+        <div class="column is-full">
+          <a class="button"><router-link :to="{ name: 'track.new_track' }">Create new</router-link></a>
+        </div>
+          <div class="column is-two-fifths" v-for="track in tracks">
+            <v-track-card :track=track></v-track-card>
+          </div>
+      </div>
+    </div>
   </v-layout>
 </template>
 

@@ -1,9 +1,21 @@
 <template>
   <v-layout>
-    <button class="button"><router-link :to="{ name: 'track.index' }">Track List</router-link></button>
-    <button class="button"><router-link :to="{ name: 'game.start_game' }">Start Game</router-link></button>
-    <button class="button"><router-link :to="{ name: 'player.index' }">Players</router-link></button>
-    <button class="button"><router-link :to="{ name: 'game.past_games' }">Past Games</router-link></button>
+    <div class="container">
+      <div class="columns is-multiline">
+        <div class="column">
+          <router-link class="button is-fullwidth" :to="{ name: 'track.index' }">Track List</router-link>
+        </div>
+        <div class="column">
+          <router-link class="button is-fullwidth" :to="{ name: 'game.start_game' }">Start Game</router-link>
+        </div>
+        <div class="column">
+          <router-link class="button is-fullwidth" :to="{ name: 'player.index' }">Players</router-link>
+        </div>
+        <div class="column">
+          <router-link class="button is-fullwidth" :to="{ name: 'game.past_games' }">Past Games</router-link>
+        </div>
+      </div>
+    </div>
   </v-layout>
 </template>
 

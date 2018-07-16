@@ -55,12 +55,8 @@
     </nav>
 
     <div class="container pt-4">
-      <div class="row">
-        <div class="col col-12">
           <!-- Content will be placed here -->
           <slot></slot>
-        </div>
-      </div>
     </div>
 
   </div>

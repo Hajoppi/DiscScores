@@ -1,24 +1,40 @@
 <template>
   <v-layout>
-  <form>
-      <div class="field">
-        {{total}}
-        <button @click="pushField">+</button> <button @click="delField">-</button>
-        <div class="control">
-          <input class="input" v-model="name" type="text" placeholder="Track name">
+    <div class="container">
+      <div class="columns">
+        <div class="column">
+          <div class="field">
+            <label class="label">Track name</label>
+            <div class="control">
+              <input class="input" v-model="name" type="text" placeholder="Track name">
+            </div>
+          </div>
         </div>
-      </div>
-      <div v-for="(hole, index) in holes" class="field">
-        <label class="label">Hole {{index + 1}}</label>
-        <div class="control">
-          {{hole}}
-          <button @click="increment(index)">+</button> <button @click="decrement(index)">-</button>
+        <div class="column">
+          <div class="level is-mobile">
+            <div class="label level-item">Amount of holes {{total}}</div>
+            <button class="button level-item" type="button" @click="pushField"><i class="fa fa-plus"></i></button>
+            <button class="button level-item" type="button" @click="delField"><i class="fa fa-minus"></i></button>
+          </div>
         </div>
-      </div>
 
-      <button @click="save">Save</button>
-      <p></p>
-    </form>
+      </div>
+      <div class="columns is-multiline">
+      <div v-for="(hole, index) in holes" class="column is-one-fifth">
+        <div class="level is-mobile">
+          <label class="label level-item">Hole {{index + 1}}</label>
+          <div class="tag is-info level-item">Par {{hole}}</div>
+          <button class="button level-item" type="button" @click="decrement(index)"><i class="fa fa-plus"></i></button>
+          <button class="button level-item" type="button" @click="increment(index)"><i class="fa fa-minus"></i></button>
+        </div>
+      </div>
+      </div>
+      <div class="columns">
+        <div class="column is-one-fifth">
+          <a class="button is-primary is-fullwidth" @click="save">Save</a>
+        </div>
+      </div>
+    </div>
   </v-layout>
 </template>
 
