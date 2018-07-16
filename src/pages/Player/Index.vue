@@ -49,7 +49,7 @@ export default {
 
   methods: {
     addPlayer() {
-      if (this.newName.lenght > 0) {
+      if (this.newName.length > 0) {
         this.$store.dispatch('player/add', { name: this.newName });
       }
       this.newName = '';
