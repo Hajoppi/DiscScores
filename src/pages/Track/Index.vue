@@ -3,7 +3,7 @@
     <div class="container">
       <div class="columns is-multiline">
         <div class="column is-full">
-          <a class="button"><router-link :to="{ name: 'track.new_track' }">Create new</router-link></a>
+          <router-link class="button" :to="{ name: 'track.new_track' }">Create new</router-link>
         </div>
           <div class="column is-two-fifths" v-for="track in tracks">
             <v-track-card :track=track></v-track-card>

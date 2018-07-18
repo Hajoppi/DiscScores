@@ -14,7 +14,7 @@
         <td>{{totalPar(track.holes)}}</td><td v-for="player in playerScores">{{totalPar(player.scores)}} ({{currentScore(player)}})</td>
       </tr>
     </table>
-    <button class="button" @click="saveGame"><router-link :to="{ name: 'home.index' }">Save</router-link></button>
+    <router-link class="button" @click="saveGame" :to="{ name: 'home.index' }">Save</router-link>
   </v-layout>
 </template>
 

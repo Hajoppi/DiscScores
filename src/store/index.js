@@ -29,8 +29,20 @@ export default new Vuex.Store({
       // Check if the ID exists
       if (localStorage.getItem('store')) {
         // Replace the state object with the stored item
+        // Make also sure that no key is overridden
+        const savedState = JSON.parse(localStorage.getItem('store'));
+        Object.keys(state).forEach((key) => {
+          if (!(key in savedState)) {
+            savedState[key] = state[key];
+          }
+          Object.keys(state[key]).forEach((child) => {
+            if (!(child in savedState[key])) {
+              savedState[key][child] = state[key][child];
+            }
+          });
+        });
         this.replaceState(
-          Object.assign(state, JSON.parse(localStorage.getItem('store'))),
+          Object.assign(state, savedState),
         );
       }
     },

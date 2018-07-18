@@ -1,16 +1,23 @@
 <template>
   <v-layout>
-    <p> Current hole {{currentHole+1}}</p><p> Par {{track.holes[currentHole]}}</p>
-    <button class="button" @click="previousHole">Previous</button>
-    <button class="button" @click="nextHole">Next</button>
-    <table class="table is-fullwidth">
-      <tr v-for="player in playerScores">
-        <td>{{player.name}} ({{currentScore(player)}})</td> <td>{{hole(player)}}</td> 
-        <td><button class="button" @click="decrement(player)">-</button></td>
-        <td><button class="button" @click="increment(player)">+</button></td>
-      </tr>
-    </table>
-    <button class="button"><router-link :to="{ name: 'game.scores' }">Save</router-link></button>
+    <div class="container">
+      <h1 class="label">Current hole {{currentHole+1}}</h1>
+      <div class="level is-mobile">
+        <h2 class="tag is-info level-item level-left">Par {{track.holes[currentHole]}}</h2>
+        <a class="button level-item" @click="previousHole"><i class="fa fa-arrow-left fa-2x"></i></a>
+        <a class="button level-item" @click="nextHole"><i class="fa fa-arrow-right fa-2x"></i></a>
+      </div>    
+      <div v-for="player in playerScores">
+        <div class="columns is-mobile is-fullwidth">
+          <div class="column label">{{player.name}}</div>
+          <div class="column">({{currentScore(player)}})</div>
+          <div class="column">{{hole(player)}}</div>
+          <div class="column"><a class="button" @click="decrement(player)"><i class="fa fa-minus"></i></a></div>
+          <div class="column"><a class="button" @click="increment(player)"><i class="fa fa-plus"></i></a></div>
+        </div>
+      </div>
+      <router-link class="button" :to="{ name: 'game.scores' }">Save</router-link>
+    </div>
   </v-layout>
 </template>
 

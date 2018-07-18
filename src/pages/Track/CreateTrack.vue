@@ -24,8 +24,8 @@
         <div class="level is-mobile">
           <label class="label level-item">Hole {{index + 1}}</label>
           <div class="tag is-info level-item">Par {{hole}}</div>
-          <button class="button level-item" type="button" @click="decrement(index)"><i class="fa fa-plus"></i></button>
-          <button class="button level-item" type="button" @click="increment(index)"><i class="fa fa-minus"></i></button>
+          <button class="button level-item" type="button" @click="decrement(index)"><i class="fa fa-minus"></i></button>
+          <button class="button level-item" type="button" @click="increment(index)"><i class="fa fa-plus"></i></button>
         </div>
       </div>
       </div>
