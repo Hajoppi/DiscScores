@@ -29,7 +29,7 @@ server.route({
   handler: async (request, reply) => {
     try {
       const courseObj = request.payload;
-      await db.createCourse(courseObj);
+     return await db.createCourse(courseObj);
     }
     catch (error) {
       console.log(error);
