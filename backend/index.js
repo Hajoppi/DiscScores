@@ -17,7 +17,7 @@ const init = async () => {
 };
 
 process.on('unhandledRejection', (err) => {
-  console.log(err);
+  console.error(err);
   process.exit(1);
 });
 
@@ -26,29 +26,56 @@ process.on('unhandledRejection', (err) => {
 server.route({
   method: 'POST',
   path: '/courses',
-  handler: async (request, reply) => {
+  handler: async (request, h) => {
     try {
       const courseObj = request.payload;
-     return await db.createCourse(courseObj);
+      return await db.createCourse(courseObj);
     }
     catch (error) {
-      console.log(error);
+      console.error(error);
+      throw error;
+    }
+  }
+});
+// Fetch the signups
+server.route({
+  method: 'GET',
+  path: '/courses/{id?}',
+  handler: async (request, h) => {
+    try {
+      return await db.getCourses(request.params.id);
+    } catch (error) {
+      console.error(error);
       throw error;
     }
   }
 });
 
-
-// Fetch the signups
 server.route({
-  method: 'GET',
-  path: '/courses',
-  handler: async (request, h) => {
+  method: 'DELETE',
+  path: '/courses/{id}',
+  handler: async(request, h) => {
     try {
-      return await db.getCourses();
-    } catch (err) {
-      console.error(err);
-      throw err;
+      const id = request.params.id;
+      return await db.removeCourse(id);
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  }
+});
+
+server.route({
+  method: 'PUT',
+  path: '/courses/{id}',
+  handler: async(request, h) => {
+    try {
+      const courseObj = request.payload;
+      const id = request.params.id;
+      return await db.updateCourse(id, courseObj);
+    } catch (error) {
+      console.error(error);
+      throw error;
     }
   }
 });
