@@ -4,7 +4,7 @@
 
 create table courses (
   id serial not null primary key,
-  course_name TEXT NOT null,
+  course_name TEXT NOT null
 );
 
 create table holes (
