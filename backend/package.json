@@ -10,6 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@hapi/basic": "^5.1.0",
+    "@hapi/cookie": "^10.1.0",
     "bell": "^10.0.0",
     "hapi": "^18.1.0",
     "pg": "^7.9.0"
