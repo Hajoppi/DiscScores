@@ -2,7 +2,6 @@
 
 const Hapi = require('hapi');
 const auth = require('./app/authentication');
-const routes = require('./app/routes');
 
 const server = Hapi.server({
   port: process.env.PORT || 3001,
@@ -14,7 +13,8 @@ const server = Hapi.server({
 
 const init = async () => {
   await auth.init(server);
-  await routes.init(server);
+  await require('./app/routes/users')(server);
+  await require('./app/routes/courses')(server);
   await server.start();
   console.log(`Server running at: ${server.info.uri}`);
 };

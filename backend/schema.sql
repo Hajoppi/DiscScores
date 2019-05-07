@@ -8,4 +8,11 @@ create table courses (
   holes integer[] NOT null
 );
 
+create table users (
+  id serial NOT null primary key,
+  email TEXT NOT null,
+  username TEXT NOT null,
+  password TEXT NOT null,
+);
+
 INSERT INTO courses (course_name, holes) VALUES ('puolarmaari', ARRAY[3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3]);

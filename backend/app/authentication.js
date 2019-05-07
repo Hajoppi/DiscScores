@@ -16,7 +16,7 @@ const validate = async (request, username, password) => {
 }
 
 auth.init = async (server) => {
-  await server.register(Bell);
+  await server.register(AuthBasic);
   await server.register(AuthCookie);
 
   const authCookieOptions = {
@@ -28,7 +28,7 @@ auth.init = async (server) => {
       },
   };
 
-  server.auth.strategy('simple', 'basic', { validate });
+  server.auth.strategy('basic', 'basic', { validate });
   server.auth.strategy('ds-cookie', 'cookie', authCookieOptions);
   //server.auth.default('ds-cookie');
 };
