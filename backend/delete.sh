@@ -1,0 +1,1 @@
+curl --request DELETE localhost:3001/courses/2

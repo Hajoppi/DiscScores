@@ -21,11 +21,12 @@ db.getCourses = async (id) => {
 };
 
 db.deleteCourse = async (id) => {
-  return await pool.query('DELETE FROM course where course=$1', [id]);
+  const result = await pool.query('DELETE FROM courses where id=$1', [id]);
+  return result.rowCount;
 };
 
 db.updateCourse = async (id, data) => {
-  return await pool.query('UPDATE courses SET (course_name, holes) = ($2, $3) WHERE id=$1', [id, data.course_name, data.holes]);
+  await pool.query('UPDATE courses SET (course_name, holes) = ($2, $3) WHERE id=$1', [id, data.course_name, data.holes]);
 };
 
 db.terminate = async () => {
