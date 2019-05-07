@@ -5,14 +5,15 @@ const db = require('../services/db');
 
 const auth = module.exports = {};
 
-const validate = async (request, username, password) => {
-  const user = await db.getUser(user);
+const validate = async (request, email, password) => {
+  const user = await db.getUser(email);
   if (!user) {
     return { credentials: null, isValid: false};
   }
 
   const isValid = await Bcrypt.compare(password, user.password);
   const credentials = {id: user.id, name: user.name };
+  return { isValid, credentials };
 }
 
 auth.init = async (server) => {

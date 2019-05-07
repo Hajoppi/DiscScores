@@ -1,3 +1,5 @@
+const Bcrypt = require('bcrypt');
+
 const { Pool } = require('pg');
 const pool = new Pool();
 const db = module.exports = {};
@@ -28,6 +30,12 @@ db.deleteCourse = async (id) => {
 db.updateCourse = async (id, data) => {
   await pool.query('UPDATE courses SET (course_name, holes) = ($2, $3) WHERE id=$1', [id, data.course_name, data.holes]);
 };
+
+db.createUser = async (user) => {
+  const hash = await Bcrypt.hash(user.password,10);
+  return await pool.query('INSERT INTO users (email, username, firstname, lastname, password) values ($1, $2, $3, $4, $5)',
+    [user.email, user.username, user.firstname, user.lastname, hash]);
+}
 
 db.terminate = async () => {
   await pool.end();

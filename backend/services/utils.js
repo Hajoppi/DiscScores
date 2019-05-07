@@ -1,7 +1,6 @@
 'use strict';
 
-const crypto = require('crypto'),
-      algorithm = 'aes256',
+const bcrypt= require('bcrypt'),
       secret = process.env.SECRET_KEY;
 
 const utils = module.exports = {};
@@ -11,11 +10,9 @@ if(!secret) {
   return process.exit(1);
 }
 
-utils.encrypt = (text) => {
-  const cipher = crypto.createCipher(algorithm, secret);
-  let crypted = cipher.update(text, 'utf8', 'hex');
-  crypted += cipher.final('hex');
-  return crypted;
+utils.hash = async (password) => {
+  const saltRound = 10;
+  return await bcrypt.hash(password, saltRound);
 }
 
 utils.decrypt = (text) => {
