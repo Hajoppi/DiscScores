@@ -1,7 +1,6 @@
 const AuthCookie = require('@hapi/cookie');
 const AuthBasic = require('@hapi/basic');
 const Bcrypt = require('bcrypt');
-const Bell = require('bell');
 
 const auth = module.exports = {};
 
@@ -28,16 +27,7 @@ auth.init = async (server) => {
       },
   };
 
-  const bellAuthOptions = {
-    provider: 'github',
-    password: '', //Password used for encryption
-    clientId: '',//'YourAppId',
-    clientSecret: '',//'YourAppSecret',
-    isSecure: false
-  };
-
-  server.auth.strategy('ds-cookie', 'cookie', authCookieOptions);
-  server.auth.strategy('github', 'bell', bellAuthOptions);
   server.auth.strategy('simple', 'basic', { validate });
+  server.auth.strategy('ds-cookie', 'cookie', authCookieOptions);
   //server.auth.default('ds-cookie');
 };

@@ -7,7 +7,7 @@ export async function init(server) {
     method: 'GET',
     path: '/login',
     options: {
-      auth: 'github'
+      auth: 'basic'
     },
     handler: function (request, reply) {
       if (request.auth.isAuthenticated) {
