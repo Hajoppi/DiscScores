@@ -1,6 +1,7 @@
 const AuthCookie = require('@hapi/cookie');
 const AuthBasic = require('@hapi/basic');
 const Bcrypt = require('bcrypt');
+const db = require('../services/db');
 
 const auth = module.exports = {};
 

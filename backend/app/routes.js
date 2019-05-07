@@ -9,7 +9,7 @@ export async function init(server) {
     options: {
       auth: 'basic'
     },
-    handler: function (request, reply) {
+    handler: function (request, h) {
       if (request.auth.isAuthenticated) {
         request.cookieAuth.set(request.auth.credentials);
         console.log(request.auth);
@@ -28,14 +28,7 @@ export async function init(server) {
       return request.auth.credentials.profile;
     }
   });
-  server.route({
-    method: 'POST',
-    path: '/login',
-    handler: function(request, h) {
-      return 1;
-    }
-  });
-      
+
   server.route({
     method: 'GET',
     path: '/logout',
