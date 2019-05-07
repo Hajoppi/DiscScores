@@ -1,35 +1,25 @@
-const AuthCookie = require('@hapi/cookie');
-const AuthBasic = require('@hapi/basic');
+const AuthJwt = require('hapi-auth-jwt2');
 const Bcrypt = require('bcrypt');
 const db = require('../services/db');
 
 const auth = module.exports = {};
 
-const validate = async (request, email, password) => {
-  const user = await db.getUser(email);
+const validate = async function(decoded, request) {
+  const user = await db.getUserById(decoded.id);
   if (!user) {
-    return { credentials: null, isValid: false};
+    return { isValid: false };
   }
-
-  const isValid = await Bcrypt.compare(password, user.password);
-  const credentials = {id: user.id, name: user.name };
-  return { isValid, credentials };
+  else {
+    return { isValid: true };
+  }
 }
 
 auth.init = async (server) => {
-  await server.register(AuthBasic);
-  await server.register(AuthCookie);
-
-  const authCookieOptions = {
-      cookie: {
-        //password will not be in production :D
-        password: '112341234123412341234123412341234', //Password used for encryption.
-        name:'ds-cookie', // Name of cookie to set
-        isSecure: false
-      },
+  await server.register(authJwt);
+  jwtOptions = {
+    key: process.env.SECRET_KEY,
+    validate: validate,
+    verifyOptions: { algorithms: ['HS256']}
   };
-
-  server.auth.strategy('basic', 'basic', { validate });
-  server.auth.strategy('ds-cookie', 'cookie', authCookieOptions);
-  //server.auth.default('ds-cookie');
+  server.auth.strategy('jwt', 'jwt', jwtOptions);
 };

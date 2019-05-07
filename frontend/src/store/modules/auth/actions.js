@@ -8,30 +8,26 @@
 
 import Vue from 'vue';
 import store from '@/store';
+import AuthProxy from '@/proxies/AuthProxy';
 import * as types from './mutation-types';
 
 export const check = ({ commit }) => {
   commit(types.CHECK);
 };
 
-export const register = ({ commit }) => {
-  /*
-   * Normally you would use a proxy to register the user:
-   *
-   * new Proxy()
-   *  .register(payload)
-   *  .then((response) => {
-   *    commit(types.REGISTER, response);
-   *  })
-   *  .catch(() => {
-   *    console.log('Request failed...');
-   *  });
-   */
-  commit(types.LOGIN, 'RandomGeneratedToken');
+export const register = ({ commit }, payload) => {
+  new Proxy()
+    .register(payload)
+    .then((response) => {
+      commit(types.LOGIN, response);
+    })
+    .catch(() => {
+    });
 };
 
-export const login = ({ commit }) => {
-  new Proxy()
+export const login = ({ commit }, payload) => {
+  console.log(payload);
+  new AuthProxy()
     .login(payload)
     .then((response) => {
       commit(types.LOGIN, response);
@@ -39,13 +35,8 @@ export const login = ({ commit }) => {
       Vue.router.push({
         name: 'home.index',
       });
-   }).catch(() => {
-     console.log('Request failed...');
-   });
-  
-  //commit(types.LOGIN, 'RandomGeneratedToken');
-  //store.dispatch('account/find');
-
+    }).catch(() => {
+    });
   Vue.router.push({
     name: 'home.index',
   });

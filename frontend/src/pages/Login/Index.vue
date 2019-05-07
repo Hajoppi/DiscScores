@@ -5,7 +5,7 @@
         Login
       </span>
       <div slot="body">
-        <form @submit.prevent="login(user)">
+        <form @submit.prevent="login">
           <div class="form-group">
             <div class="input-group">
               <div class="input-group-addon">
@@ -16,6 +16,7 @@
                 type="email"
                 placeholder="Email"
                 class="form-control"
+                required
               >
             </div>
           </div>
@@ -29,6 +30,7 @@
                 type="password"
                 placeholder="Password"
                 class="form-control"
+                required
               >
             </div>
           </div>
@@ -87,8 +89,9 @@
        *
        * @param {Object} user The user to be logged in.
        */
-      login(user) {
-        this.$store.dispatch('auth/login', user);
+      login() {
+        console.log('Dispatching stuff');
+        this.$store.dispatch('auth/login', this.user);
       },
     },
 

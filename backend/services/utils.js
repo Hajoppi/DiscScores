@@ -1,6 +1,7 @@
 'use strict';
 
 const bcrypt= require('bcrypt'),
+      jwt = require('jsonwebtoken'),
       secret = process.env.SECRET_KEY;
 
 const utils = module.exports = {};
@@ -15,9 +16,10 @@ utils.hash = async (password) => {
   return await bcrypt.hash(password, saltRound);
 }
 
-utils.decrypt = (text) => {
-  const decipher = crypto.createDecipher(algorithm, secret);
-  let decrypted = decipher.update(text,'hex', 'utf8');
-  decrypted += decipher.final();
-  return decrypted;
+utils.createToken = (user) => {
+  return jwt.sign(
+    { id: user.id, username: user.username, scope: 'normal'},
+    secret,
+    { algorithm: 'HS256', expiresIn: "1d"}
+  );
 }

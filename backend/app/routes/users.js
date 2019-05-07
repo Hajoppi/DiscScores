@@ -1,19 +1,28 @@
 const db = require('../../services/db');
+const utils = require('../../services/utils');
 
 module.exports = async (server) => {
   server.route({
-    method: 'GET',
+    method: 'POST',
     path: '/login',
-    options: {
-      auth: 'basic'
-    },
-    handler: function (request, h) {
-      if (request.auth.isAuthenticated) {
-        request.cookieAuth.set(request.auth.credentials);
-        console.log(request.auth);
-        return 'Hello ' + request.auth.credentials.profile.username;
+    handler: async (request, h) => {
+      const payload = request.payload;
+      try {
+        const user = await db.getUser(email);
+        if (!user) {
+          return h.response('No user').code(401);
+        }
+        const isValid = await Bcrypt.compare(password, user.password);
+        if (isValid) {
+          return utils.createToken(user);
+        }
+        else {
+          return h.response('unauthenticated').code(401);
+        }  
+      } catch (error) {
+        console.error(error);
+        throw error;
       }
-      h.response('unauthenticated').code(401);
     }
   });
   
@@ -21,29 +30,25 @@ module.exports = async (server) => {
     method: 'GET',
     path: '/account',
     options: {
-      auth: 'ds-cookie',
+      auth: 'jwt',
     },
     handler: function(request, h) {
-      return request.auth.credentials.profile;
-    }
-  });
-
-  server.route({
-    method: 'GET',
-    path: '/logout',
-    handler: function(request, h) {
-      request.cookieAuth.clear();
-      return "Logged out"
+      return "You used a token!";
     }
   });
 
   server.route({
     method: 'POST',
     path: '/register',
-    handler: (request, h) => {
+    handler: async (request, h) => {
       const obj = request.payload;
-      await db.createUser(obj);
-      return 1; 
+      try {
+        const user = await db.createUser(obj);
+        return { id_token: utils.createToken(user)}; 
+      } catch (err) {
+        console.error(err);
+        throw err;
+      }
     }
   })
 }
