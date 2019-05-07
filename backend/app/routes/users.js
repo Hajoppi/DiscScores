@@ -1,4 +1,4 @@
-
+const db = require('../../services/db');
 
 module.exports = async (server) => {
   server.route({
@@ -16,6 +16,7 @@ module.exports = async (server) => {
       h.response('unauthenticated').code(401);
     }
   });
+  
   server.route({
     method: 'GET',
     path: '/account',
@@ -35,4 +36,14 @@ module.exports = async (server) => {
       return "Logged out"
     }
   });
+
+  server.route({
+    method: 'POST',
+    path: '/register',
+    handler: (request, h) => {
+      const obj = request.payload;
+      await db.createUser(obj);
+      return 1; 
+    }
+  })
 }
