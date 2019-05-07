@@ -31,24 +31,20 @@ export const register = ({ commit }) => {
 };
 
 export const login = ({ commit }) => {
-  /*
-   * Normally you would use a proxy to log the user in:
-   *
-   * new Proxy()
-   *  .login(payload)
-   *  .then((response) => {
-   *    commit(types.LOGIN, response);
-   *    store.dispatch('account/find');
-   *    Vue.router.push({
-   *      name: 'home.index',
-   *    });
-   *  })
-   *  .catch(() => {
-   *    console.log('Request failed...');
-   *  });
-   */
-  commit(types.LOGIN, 'RandomGeneratedToken');
-  store.dispatch('account/find');
+  new Proxy()
+    .login(payload)
+    .then((response) => {
+      commit(types.LOGIN, response);
+      store.dispatch('account/find');
+      Vue.router.push({
+        name: 'home.index',
+      });
+   }).catch(() => {
+     console.log('Request failed...');
+   });
+  
+  //commit(types.LOGIN, 'RandomGeneratedToken');
+  //store.dispatch('account/find');
 
   Vue.router.push({
     name: 'home.index',

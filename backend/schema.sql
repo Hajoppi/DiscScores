@@ -10,7 +10,7 @@ create table courses (
 
 create table users (
   id serial NOT null primary key,
-  email TEXT NOT null,
+  email TEXT UNIQUE NOT null,
   username TEXT NOT null,
   firstname TEXT NOT null,
   lastname TEXT NOT null,

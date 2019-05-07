@@ -36,6 +36,10 @@ db.createUser = async (user) => {
   return await pool.query('INSERT INTO users (email, username, firstname, lastname, password) values ($1, $2, $3, $4, $5)',
     [user.email, user.username, user.firstname, user.lastname, hash]);
 }
+db.getUser = async (email) => {
+  const result = await pool.query('SELECT id, password FROM users WHERE email=$1', [email]);
+  return result.rows[0];
+}
 
 db.terminate = async () => {
   await pool.end();
