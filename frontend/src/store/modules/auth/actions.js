@@ -30,7 +30,7 @@ export const login = ({ commit }, payload) => {
   new AuthProxy()
     .login(payload)
     .then((response) => {
-      commit(types.LOGIN, response);
+      commit(types.LOGIN, response.id_token);
       store.dispatch('account/find');
       Vue.router.push({
         name: 'home.index',
