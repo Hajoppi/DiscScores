@@ -17,7 +17,7 @@ module.exports = async (server) => {
         console.log(user);
         const isValid = await Bcrypt.compare(payload.password, user.password);
         if (isValid) {
-          return utils.createToken(user);
+          return { id_token: utils.createToken(user)};
         }
         else {
           return h.response('unauthenticated').code(401);
@@ -28,30 +28,14 @@ module.exports = async (server) => {
       }
     }
   });
-  const validate = async (request, h) => {
-    const token = request.headers.authorization;
-    try {
-      return utils.verifyToken(token);
-    } catch (error) {
-      console.error(error);
-      if(error.name === "TokenExpiredError") {
-        throw Boom.unauthorized('Token expired')
-      } else {
-        throw Boom.unauthorized('invalid token');
-      }
-    }
-  }
   server.route({
     method: 'GET',
     path: '/account',
     config: {
-      pre: [
-        { method: validate, assign: 'user' }
-      ]
+      auth: 'jwt'
     },
     handler: async (request, h) => {
-      console.log(request.pre.user);
-      const user = await db.getUserById(user.id);
+      const user = request.auth.credentials;
       return `Hello ${user.username}`;
     }
   });
@@ -64,7 +48,11 @@ module.exports = async (server) => {
       try {
         const user = await db.createUser(obj);
         return { id_token: utils.createToken(user)}; 
-      } catch (err) {
+      } catch (error) {
+        //Email was not unique
+        if (error.code === '23505') {
+          throw Boom.conflict('Email already in use');
+        }
         console.error(err);
         throw err;
       }
