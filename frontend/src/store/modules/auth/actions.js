@@ -7,8 +7,7 @@
  */
 
 import Vue from 'vue';
-import store from '@/store';
-import AuthProxy from '@/proxies/AuthProxy';
+import AuthProxy from '../../../proxies/AuthProxy';
 import * as types from './mutation-types';
 
 export const check = ({ commit }) => {
@@ -31,7 +30,7 @@ export const login = ({ commit }, payload) => {
     .login(payload)
     .then((response) => {
       commit(types.LOGIN, response.id_token);
-      store.dispatch('account/find');
+      Vue.$store.dispatch('account/find');
       Vue.router.push({
         name: 'home.index',
       });

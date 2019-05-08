@@ -18,12 +18,13 @@ class AuthProxy extends Proxy {
    *
    * @returns {Promise} The result in a promise.
    */
-  login({ username, password }) {
+  login({ email, password }) {
     const data = {
-      username,
+      email,
       password,
     };
-    return this.submit('post', `${this.endpoint}/login`, data);
+    console.log
+    return this.submit('post', `/login`, data);
   }
 
   /**
@@ -34,7 +35,7 @@ class AuthProxy extends Proxy {
    * @returns {Promise} The result in a promise.
    */
   register(data) {
-    return this.submit('post', `${this.endpoint}/register`, data);
+    return this.submit('post', `/${this.endpoint}/register`, data);
   }
 }
 

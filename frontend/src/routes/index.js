@@ -10,7 +10,7 @@ export default [
   {
     path: '/home',
     name: 'home.index',
-    component: () => import('@/pages/Home/Index'),
+    component: () => import('../pages/Home/Index'),
 
     // If the user needs to be authenticated to view this page
     meta: {
@@ -22,7 +22,7 @@ export default [
   {
     path: '/account',
     name: 'account.index',
-    component: () => import('@/pages/Account/Index'),
+    component: () => import('../pages/Account/Index'),
 
     // If the user needs to be authenticated to view this page.
     meta: {
@@ -34,7 +34,7 @@ export default [
   {
     path: '/login',
     name: 'login.index',
-    component: () => import('@/pages/Login/Index'),
+    component: () => import('../pages/Login/Index'),
 
     // If the user needs to be a guest to view this page.
     meta: {
@@ -46,7 +46,7 @@ export default [
   {
     path: '/register',
     name: 'register.index',
-    component: () => import('@/pages/Register/Index.vue'),
+    component: () => import('../pages/Register/Index.vue'),
 
     // If the user needs to be a guest to view this page.
     meta: {
@@ -58,7 +58,7 @@ export default [
   {
     path: '/track',
     name: 'track.index',
-    component: () => import('@/pages/Track/Index.vue'),
+    component: () => import('../pages/Track/Index.vue'),
 
     meta: {
       auth: true,
@@ -67,7 +67,7 @@ export default [
   {
     path: '/track/new',
     name: 'track.new_track',
-    component: () => import('@/pages/Track/CreateTrack.vue'),
+    component: () => import('../pages/Track/CreateTrack.vue'),
 
     meta: {
       auth: true,
@@ -78,7 +78,7 @@ export default [
   {
     path: '/game/start',
     name: 'game.start_game',
-    component: () => import('@/pages/Game/SelectTrack.vue'),
+    component: () => import('../pages/Game/SelectTrack.vue'),
 
     meta: {
       auth: true,
@@ -87,7 +87,7 @@ export default [
   {
     path: '/game/game',
     name: 'game.game',
-    component: () => import('@/pages/Game/Game.vue'),
+    component: () => import('../pages/Game/Game.vue'),
 
     meta: {
       auth: true,
@@ -96,7 +96,7 @@ export default [
   {
     path: '/game/scores',
     name: 'game.scores',
-    component: () => import('@/pages/Game/GameScores.vue'),
+    component: () => import('../pages/Game/GameScores.vue'),
 
     meta: {
       auth: true,
@@ -105,7 +105,7 @@ export default [
   {
     path: '/game/past_games',
     name: 'game.past_games',
-    component: () => import('@/pages/Game/PastGames.vue'),
+    component: () => import('../pages/Game/PastGames.vue'),
     meta: {
       auth: true,
     },
@@ -115,7 +115,7 @@ export default [
   {
     path: '/players',
     name: 'player.index',
-    component: () => import('@/pages/Player/Index.vue'),
+    component: () => import('../pages/Player/Index.vue'),
 
     meta: {
       auth: true,

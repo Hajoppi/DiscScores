@@ -7,8 +7,8 @@
  */
 
 // import Vue from 'vue';
-import PlayerProxy from '@/proxies/PlayerProxy';
-import PlayerTransformer from '@/transformers/PlayerTransformer';
+import PlayerProxy from '../../../proxies/PlayerProxy';
+import PlayerTransformer from '../../../transformers/PlayerTransformer';
 import * as types from './mutation-types';
 
 

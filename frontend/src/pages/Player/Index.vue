@@ -33,7 +33,7 @@
  * The home index page.
  */
 
-import VLayout from '@/layouts/Default';
+import VLayout from '../../layouts/Default';
 
 export default {
   /**

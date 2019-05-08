@@ -94,8 +94,8 @@
    * Page where the user can register.
    */
 
-  import VLayout from '@/layouts/Minimal';
-  import VCard from '@/components/Card';
+  import VLayout from '../../layouts/Minimal';
+  import VCard from '../../components/Card';
 
   export default {
     /**
