@@ -10,10 +10,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@hapi/basic": "^5.1.0",
+    "@hapi/boom": "^7.4.2",
+    "@hapi/hapi": "^18.3.1",
     "bcrypt": "^3.0.6",
-    "hapi": "^18.1.0",
-    "hapi-auth-jwt2": "^4.0.0",
+    "jsonwebtoken": "^8.5.1",
     "pg": "^7.9.0"
   }
 }

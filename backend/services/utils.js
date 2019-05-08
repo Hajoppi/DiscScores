@@ -17,9 +17,15 @@ utils.hash = async (password) => {
 }
 
 utils.createToken = (user) => {
+  console.log(secret);
   return jwt.sign(
     { id: user.id, username: user.username, scope: 'normal'},
     secret,
-    { algorithm: 'HS256', expiresIn: "1d"}
+    { algorithm: 'HS256', expiresIn: "1m"}
   );
+}
+
+utils.verifyToken = (token) => {
+  const strippedToken = token.split(" ")[1];
+  return jwt.verify(strippedToken, secret);
 }

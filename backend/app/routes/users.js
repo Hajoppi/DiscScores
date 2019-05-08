@@ -1,5 +1,7 @@
 const db = require('../../services/db');
 const utils = require('../../services/utils');
+const Bcrypt = require('bcrypt');
+const Boom = require('@hapi/boom');
 
 module.exports = async (server) => {
   server.route({
@@ -8,11 +10,12 @@ module.exports = async (server) => {
     handler: async (request, h) => {
       const payload = request.payload;
       try {
-        const user = await db.getUser(email);
+        const user = await db.getUser(payload.email);
         if (!user) {
           return h.response('No user').code(401);
         }
-        const isValid = await Bcrypt.compare(password, user.password);
+        console.log(user);
+        const isValid = await Bcrypt.compare(payload.password, user.password);
         if (isValid) {
           return utils.createToken(user);
         }
@@ -25,15 +28,31 @@ module.exports = async (server) => {
       }
     }
   });
-  
+  const validate = async (request, h) => {
+    const token = request.headers.authorization;
+    try {
+      return utils.verifyToken(token);
+    } catch (error) {
+      console.error(error);
+      if(error.name === "TokenExpiredError") {
+        throw Boom.unauthorized('Token expired')
+      } else {
+        throw Boom.unauthorized('invalid token');
+      }
+    }
+  }
   server.route({
     method: 'GET',
     path: '/account',
-    options: {
-      auth: 'jwt',
+    config: {
+      pre: [
+        { method: validate, assign: 'user' }
+      ]
     },
-    handler: function(request, h) {
-      return "You used a token!";
+    handler: async (request, h) => {
+      console.log(request.pre.user);
+      const user = await db.getUserById(user.id);
+      return `Hello ${user.username}`;
     }
   });
 

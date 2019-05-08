@@ -1,11 +1,12 @@
 'use strict';
 
-const Hapi = require('hapi');
+const Hapi = require('@hapi/hapi');
 const auth = require('./app/authentication');
 
 const server = Hapi.server({
   port: process.env.PORT || 3001,
   host: 'localhost',
+  address: '0.0.0.0',
   routes: {
     cors: true
   }
