@@ -17,14 +17,15 @@ export default {
   },
 
   [ADD](state, group) {
+    console.log(group);
     if (group.name !== '') {
       state.groups.push(group);
     }
   },
 
-  [REMOVE](state, id) {
+  [REMOVE](state, group) {
     for (let i = 0; i < state.groups.length; i += 1) {
-      if (state.groups[i].id === id) {
+      if (state.groups[i].id === group.id) {
         state.groups.splice(i, 1);
         break;
       }

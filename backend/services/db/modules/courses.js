@@ -1,5 +1,5 @@
 
-module.exports = async (db) => {
+module.exports = async (db, pool) => {
   db.createCourse = async (data) => {
     const { rows } = await pool.query("INSERT INTO courses (course_name, holes) values ($1, $2) returning id, course_name, holes", [data.course_name, data.holes]);
     return rows[0];

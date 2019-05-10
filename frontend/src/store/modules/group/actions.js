@@ -7,23 +7,26 @@
  */
 
 // import Vue from 'vue';
+import Proxy from '/proxies/Proxy';
+import GroupTransformer from '/transformers/GroupTransformer';
 import * as types from './mutation-types';
 
 
 export const all = ({ commit }) => {
-  new Proxy('/groups').all().then((response) => {
-    commit(types.ALL, GroupsTransformer.fetchCollection(response));
+  new Proxy('groups').all().then((response) => {
+    commit(types.ALL, GroupTransformer.fetchCollection(response));
   });
 };
 
 export const add = ({ commit }, group) => {
-  new Proxy('/groups').create(group).then((response) => {
-    commit(types.SAVE,  GroupsTransformer.fetch(response));
+  console.log("creating: " + group);
+  new Proxy('groups').create(GroupTransformer.send(group)).then((response) => {
+    commit(types.ADD,  GroupTransformer.fetch(response));
   });
 };
 
 export const remove = ({ commit }, group) => {
-  new Proxy('/groups').destroy(group).then((response) => {
+  new Proxy('groups').destroy(group).then((response) => {
     commit(types.REMOVE, GroupTransformer.fetch(response));
   });
 };

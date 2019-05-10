@@ -1,4 +1,6 @@
-module.exports = async (db) => {
+const Bcrypt = require('bcrypt');
+
+module.exports = async (db, pool) => {
   db.createUser = async (user) => {
       const hash = await Bcrypt.hash(user.password,10);
       const result = await pool.query('INSERT INTO users (email, username, firstname, lastname, password) values ($1, $2, $3, $4, $5) returning id',

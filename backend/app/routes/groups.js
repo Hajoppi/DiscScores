@@ -5,7 +5,7 @@ module.exports = async (server) => {
   server.route([
     {
       method: 'GET',
-      path: '/groups/{?id}',
+      path: '/groups/{id?}',
       handler: async (request, h) => {
         try {
           const id = request.params.id;
@@ -23,7 +23,7 @@ module.exports = async (server) => {
       handler: async (request, h) => {
         try {
           const obj = request.payload;
-          return await db.addGroup(obj.name);
+          return await db.addGroup(obj.group_name);
         } catch (error) {
           console.error(error);
           throw error;

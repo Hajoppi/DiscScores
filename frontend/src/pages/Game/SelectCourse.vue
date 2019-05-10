@@ -2,7 +2,7 @@
   <v-layout>
     <div class="container">
       <div class="columns">
-        <div class="column" v-for="player in players" :key=player>
+        <div class="column" v-for="group in groups" :key=group.id>
           <span class="label">{{player.name}}</span>
           <input class="is-checkradio is-block is-success" :value=player type="checkbox" :id="player.name" v-model="checkedNames" :name=player.name>
         </div>
@@ -37,6 +37,9 @@
     computed: {
       courses() {
         return this.$store.state.course.courses;
+      },
+      groups() {
+        return this.$store.state.group.groups;
       },
       players() {
         return this.$store.state.player.players;

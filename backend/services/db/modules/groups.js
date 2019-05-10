@@ -1,4 +1,4 @@
-module.exports = async (db) => {
+module.exports = async (db, pool) => {
   db.getGroups = async (id) => {
     let result;
     if (id) result = await pool.query('SELECT * from groups WHERE id=$1',{id});
@@ -6,13 +6,13 @@ module.exports = async (db) => {
     return result.rows;
   };
   
-  db.addGroup = async () => {
-    const result = await pool.query('INSERT INTO groups (name) values ($1) returning group_name');
+  db.addGroup = async (group) => {
+    const result = await pool.query('INSERT INTO groups (group_name) values ($1) returning id,group_name', [group]);
     return result.rows[0];
   };
   
-  db.deleteGroup = async () => {
-    const result = await pool.query('DELETE FROM groups WHERE id=$1 returning id', [$1]);
+  db.deleteGroup = async (id) => {
+    const result = await pool.query('DELETE FROM groups WHERE id=$1 returning id', [id]);
     return result.rows[0];
   };
   

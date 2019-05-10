@@ -2,23 +2,23 @@
   <v-layout>
     <div class="field">
     <div class="control">
-      <div class="label">Add Player</div>
+      <div class="label">Add Group</div>
       <div class="columns is-mobile">
         <div class="column is-half">
           <input class="input" v-model="newName" type="text">
         </div>
         <div class="column is-half">
-          <a class="button is-success" @click="addPlayer"><i class="fa fa-plus"></i></a>
+          <a class="button is-success" @click="addGroup"><i class="fa fa-plus"></i></a>
         </div>
       </div>
     </div>
     </div>
     <div class="columns">
-      <div class="column" v-for="player in players" :key=player.id>
-        <div class="label column is-half">{{player.name}}</div>
+      <div class="column" v-for="group in groups" :key=group.id>
+        <div class="label column is-half">{{group.name}}</div>
         <div class="column is-half">
-          <a class="button is-warning" @click="removePlayer(player)">Remove</a>
-        </div>game
+          <a class="button is-warning" @click="removeGroup(group)">Remove</a>
+        </div>
       </div>
     </div>
       
@@ -42,20 +42,22 @@ export default {
   name: 'game-index',
 
   computed: {
-    players() {
-      return this.$store.state.player.players;
+    groups() {
+      return this.$store.state.group.groups;
     },
   },
-
+  mounted() {
+    this.$store.dispatch('group/all');
+  },
   methods: {
-    addPlayer() {
+    addGroup() {
       if (this.newName.length > 0) {
-        this.$store.dispatch('player/add', { name: this.newName });
+        this.$store.dispatch('group/add', { name: this.newName });
       }
       this.newName = '';
     },
-    removePlayer(player) {
-      this.$store.dispatch('player/remove', player);
+    removeGroup(group) {
+      this.$store.dispatch('group/remove', group.id);
     },
   },
 
