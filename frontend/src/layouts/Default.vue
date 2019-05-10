@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar">
       <router-link
         class="navbar-brand"
         :to="{ name: 'home.index' }"
@@ -24,7 +24,7 @@
           <router-link
             :to="{ name: 'home.index' }"
             active-class="active"
-            class="nav-item"
+            class="navbar-item"
             tag="li"
           >
             <a class="nav-link">
@@ -34,7 +34,7 @@
           <router-link
             :to="{ name: 'account.index' }"
             active-class="active"
-            class="nav-item"
+            class="navbar-item"
             tag="li"
           >
             <a class="nav-link">
@@ -44,7 +44,7 @@
         </ul>
         <span class="navbar-text">
           <a
-            class="btn btn-light"
+            class="button"
             href="#"
             @click.prevent="logout"
           >

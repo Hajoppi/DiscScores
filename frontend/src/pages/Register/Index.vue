@@ -35,6 +35,19 @@
           <div class="form-group">
             <div class="input-group">
               <div class="input-group-addon">
+                <i class="fa fa-user fa-fw"></i>
+              </div>
+              <input
+                v-model="user.username"
+                type="text"
+                placeholder="Username"
+                class="form-control"
+              >
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="input-group">
+              <div class="input-group-addon">
                 <i class="fa fa-envelope fa-fw"></i>
               </div>
               <input
@@ -94,8 +107,8 @@
    * Page where the user can register.
    */
 
-  import VLayout from '../../layouts/Minimal';
-  import VCard from '../../components/Card';
+  import VLayout from '/layouts/Minimal';
+  import VCard from '/components/Card';
 
   export default {
     /**
@@ -113,6 +126,7 @@
         user: {
           firstName: null,
           lastName: null,
+          username: null,
           email: null,
           passwordConfirm: null,
           password: null,

@@ -29,7 +29,7 @@
    * The game page.
    */
 
-  import VLayout from '../../layouts/Default';
+  import VLayout from '/layouts/Default';
 
   export default {
     /**

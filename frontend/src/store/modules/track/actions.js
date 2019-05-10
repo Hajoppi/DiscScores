@@ -8,7 +8,7 @@
 
 import Vue from 'vue';
 
-import TrackTransformer from '../../../transformers/TrackTransformer';
+import TrackTransformer from '/transformers/TrackTransformer';
 import * as types from './mutation-types';
 
 

@@ -6,7 +6,7 @@
  * account module.
  */
 
-import Transformer from '../../../transformers/AccountTransformer';
+import Transformer from '/transformers/AccountTransformer';
 import * as types from './mutation-types';
 
 export const find = ({ commit }) => {

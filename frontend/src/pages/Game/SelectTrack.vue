@@ -25,8 +25,8 @@
    * The home index page.
    */
 
-  import VLayout from '../../layouts/Default';
-  import VTrackCard from '../../components/TrackCard';
+  import VLayout from '/layouts/Default';
+  import VTrackCard from '/components/TrackCard';
 
   export default {
     /**

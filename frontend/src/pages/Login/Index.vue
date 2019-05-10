@@ -1,21 +1,21 @@
 <template>
   <v-layout>
     <v-card contextual-style="dark">
-      <span slot="header">
+      <span slot="header" class="label">
         Login
       </span>
       <div slot="body">
         <form @submit.prevent="login">
-          <div class="form-group">
-            <div class="input-group">
-              <div class="input-group-addon">
+          <div class="form">
+            <div class="field">
+              <div class="control">
                 <i class="fa fa-envelope fa-fw"></i>
               </div>
               <input
                 v-model="user.email"
                 type="email"
                 placeholder="Email"
-                class="form-control"
+                class="input"
                 required
               >
             </div>
@@ -29,13 +29,13 @@
                 v-model="user.password"
                 type="password"
                 placeholder="Password"
-                class="form-control"
+                class="input"
                 required
               >
             </div>
           </div>
           <div class="form-group">
-            <button class="btn btn-outline-primary">
+            <button class="button">
               Login
             </button>
           </div>
@@ -57,8 +57,8 @@
    * Page where the user can login.
    */
 
-  import VLayout from '../../layouts/Minimal';
-  import VCard from '../../components/Card';
+  import VLayout from '/layouts/Minimal';
+  import VCard from '/components/Card';
 
   export default {
     /**

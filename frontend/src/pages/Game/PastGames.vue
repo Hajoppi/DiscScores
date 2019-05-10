@@ -15,8 +15,8 @@
    * The game page.
    */
 
-  import VLayout from '../../layouts/Default';
-  import VScoreCard from '../../components/ScoreCard';
+  import VLayout from '/layouts/Default';
+  import VScoreCard from '/components/ScoreCard';
 
   export default {
     /**

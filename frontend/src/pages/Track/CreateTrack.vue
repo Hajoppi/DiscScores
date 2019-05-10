@@ -46,8 +46,8 @@
    * The home index page.
    */
 
-  import VLayout from '../../layouts/Default';
-  import VCard from '../../components/Card';
+  import VLayout from '/layouts/Default';
+  import VCard from '/components/Card';
 
   export default {
     /**

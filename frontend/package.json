@@ -4,7 +4,7 @@
   "description": "Disc scores application",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "export $(cat .env) && npx parcel index.html --no-autoinstall --port 3000"
+    "start": "export $(cat .env) && npx parcel ./src/index.html --port 3000"
   },
   "license": "ISC",
   "dependencies": {

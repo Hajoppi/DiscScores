@@ -21,9 +21,6 @@
      * Fires when the app has been mounted.
      */
     mounted() {
-      this.$store.subscribe((mutation, state) => {
-        localStorage.setItem('store', JSON.stringify(state));
-      });
       // If the user is authenticated,
       // fetch the data from the API
       if (this.$store.state.auth.authenticated) {

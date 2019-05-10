@@ -33,8 +33,10 @@ export default class AccountTransformer extends Transformer {
   static send(account) {
     return {
       email: account.email,
-      first_name: account.firstName,
-      last_name: account.lastName,
+      firstname: account.firstName,
+      lastname: account.lastName,
+      username: account.username,
+      password: account.password,
     };
   }
 }
