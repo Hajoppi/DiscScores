@@ -19,6 +19,7 @@ import './plugins/axios';
 import { i18n } from './plugins/vue-i18n';
 import { router } from './plugins/vue-router';
 import './plugins/vuex-router-sync';
+import './plugins/font-awesome';
 
 //Import styles
 import './assets/sass/main.scss';

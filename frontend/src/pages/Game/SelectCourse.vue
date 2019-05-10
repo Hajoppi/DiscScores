@@ -8,9 +8,9 @@
         </div>
       </div>
       <div class="columns is-multiline is-mobile">
-      <div class="column is-quarter" v-for="(course, index) in courses" :key=course>
+      <div class="column is-quarter" v-for="(course, index) in courses" :key=index>
         <div class="label">{{course.name}}</div>
-        <td><a class="button" @click="select(index)"><router-link :to="{ name: 'game.game' }">Select</router-link></a></td>
+        <td><a class="button" @click.prevent="select(index)">Select</a></td>
       </div>
       </div>
     </div>
@@ -47,6 +47,9 @@
       select(index) {
         this.$store.dispatch('course/select', index);
         this.$store.dispatch('game/start', this.checkedNames);
+        this.$router.push({
+          name: 'game.game',
+      });
       },
     },
 

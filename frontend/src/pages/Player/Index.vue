@@ -14,11 +14,11 @@
     </div>
     </div>
     <div class="columns">
-      <div class="column" v-for="player in players">
+      <div class="column" v-for="player in players" :key=player.id>
         <div class="label column is-half">{{player.name}}</div>
         <div class="column is-half">
           <a class="button is-warning" @click="removePlayer(player)">Remove</a>
-        </div>
+        </div>game
       </div>
     </div>
       

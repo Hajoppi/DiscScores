@@ -7,7 +7,7 @@ class PlayerProxy extends Proxy {
    * @param {Object} parameters The query parameters.
    */
   constructor(endpoint, parameters = {}) {
-    super(endpoint, parameters);
+    super('/users', parameters);
   }
 
   /**

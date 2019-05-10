@@ -1,4 +1,4 @@
-const db = require('../../services/db');
+const db = require('../../services/db/db');
 
 
 module.exports = async (server) => {

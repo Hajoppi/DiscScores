@@ -1,4 +1,4 @@
-const db = require('../../services/db');
+const db = require('../../services/db/db');
 const utils = require('../../services/utils');
 const Bcrypt = require('bcrypt');
 const Boom = require('@hapi/boom');
@@ -31,17 +31,6 @@ module.exports = async (server) => {
       }
     }
   });
-  server.route({
-    method: 'GET',
-    path: '/account',
-    config: {
-      auth: 'jwt'
-    },
-    handler: async (request, h) => {
-      const user = request.auth.credentials;
-      return `Hello ${user.username}`;
-    }
-  });
 
   server.route({
     method: 'POST',
@@ -67,5 +56,15 @@ module.exports = async (server) => {
         throw error;
       }
     }
-  })
+  });
+
+  server.route({
+    method: 'GET',
+    path: '/players',
+    handler: async (request, h) => {
+      const result = await db.getUser();
+      const user = request.auth.credentials;
+      return `Hello ${user.username}`;
+    }
+  });
 }

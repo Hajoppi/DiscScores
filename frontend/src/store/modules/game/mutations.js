@@ -23,7 +23,7 @@ export default {
     state.currentHole = 0;
     state.players = players;
     state.players.forEach((x) => {
-      x.scores = this.state.track.selectedTrack.holes.slice(0);
+      x.scores = this.state.course.selectedCourse.holes.slice(0);
     });
   },
 
@@ -31,7 +31,7 @@ export default {
     const res = {
       date: (new Date()).toString().split(' ', 5).join(' '),
       playerScores: state.players,
-      trackName: this.state.track.selectedTrack.name,
+      courseName: this.state.course.selectedCourse.name,
     };
     this.state.game.pastGames.push(res);
   },
@@ -60,7 +60,7 @@ export default {
   },
 
   [NEXT](state) {
-    if (state.currentHole < this.state.track.selectedTrack.holes.length - 1) {
+    if (state.currentHole < this.state.course.selectedCourse.holes.length - 1) {
       state.currentHole += 1;
     }
   },
