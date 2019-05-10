@@ -1,9 +1,9 @@
 /* ============
- * Mutation types for the account module
+ * Mutation types for the course module
  * ============
  *
  * The mutation types that are available
- * on the auth module.
+ * on the course module.
  */
 
 

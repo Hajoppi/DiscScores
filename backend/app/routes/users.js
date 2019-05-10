@@ -7,6 +7,9 @@ module.exports = async (server) => {
   server.route({
     method: 'POST',
     path: '/login',
+    options: {
+      auth: false,
+    },
     handler: async (request, h) => {
       const payload = request.payload;
       try {
@@ -43,6 +46,9 @@ module.exports = async (server) => {
   server.route({
     method: 'POST',
     path: '/register',
+    options: {
+      auth: false,
+    },
     handler: async (request, h) => {
       const obj = request.payload;
       try {
@@ -53,8 +59,12 @@ module.exports = async (server) => {
         if (error.code === '23505') {
           throw Boom.conflict('Email already in use');
         }
-        console.error(err);
-        throw err;
+        //Fields were incorrect
+        if(error.code === '23502') {
+          throw Boom.badData('Fields were not correct');
+        }
+        console.error(error);
+        throw error;
       }
     }
   })

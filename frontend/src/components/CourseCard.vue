@@ -1,20 +1,17 @@
 <template>
-  <div class="columnsd">
-    <div class="label column is-one-third">{{track.name}}</div>
+  <div class="columns">
+    <div class="label column is-one-third">{{course.name}}</div>
     <div class="label column is-one-third">{{total}} Holes</div>
     <div class="column is-one-third">
-      <a class="button is-warning" @click="removeTrack(track)">Remove</a>
+      <a class="button is-warning" @click="removeCourse(course)">Remove</a>
     </div>
   </div>
 </template>
 
 <script>
 /* ============
- * Track Component
+ * Course card Component
  * ============
- *
- * A basic track component.
- *
  */
 
 import SlotMixin from '/mixins/slot';
@@ -23,7 +20,7 @@ export default {
   /**
    * The name of the component.
    */
-  name: 'trackCard',
+  name: 'courseCard',
 
   /**
    * The mixins that the component can use.
@@ -40,7 +37,7 @@ export default {
       type: String,
       required: false,
     },
-    track: null,
+    course: null,
   },
 
 
@@ -49,7 +46,7 @@ export default {
    */
   computed: {
     holes() {
-      return this.track.holes;
+      return this.course.holes;
     },
 
     total() {
@@ -58,8 +55,9 @@ export default {
   },
 
   methods: {
-    removeTrack(track) {
-      this.$store.dispatch('track/remove', track);
+    removeCourse(course) {
+      console.log("removing course with id: " + course.id);
+      this.$store.dispatch('course/remove', course);
     },
   },
 };

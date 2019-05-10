@@ -14,7 +14,7 @@ import createLogger from 'vuex/dist/logger';
 // Modules
 import account from './modules/account';
 import auth from './modules/auth';
-import track from './modules/track';
+import course from './modules/course';
 import player from './modules/player';
 import game from './modules/game';
 
@@ -29,7 +29,7 @@ export default new Vuex.Store({
   modules: {
     account,
     auth,
-    track,
+    course,
     player,
     game,
   },

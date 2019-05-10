@@ -1,9 +1,9 @@
 /* ============
- * Getters for the auth module
+ * Getters for the course module
  * ============
  *
  * The getters that are available on the
- * auth module.
+ * course module.
  */
 
 export default {};

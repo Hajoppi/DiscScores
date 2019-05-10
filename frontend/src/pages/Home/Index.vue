@@ -3,7 +3,7 @@
     <div class="container">
       <div class="columns is-multiline">
         <div class="column">
-          <router-link class="button is-fullwidth" :to="{ name: 'track.index' }">Track List</router-link>
+          <router-link class="button is-fullwidth" :to="{ name: 'course.index' }">Course List</router-link>
         </div>
         <div class="column">
           <router-link class="button is-fullwidth" :to="{ name: 'game.start_game' }">Start Game</router-link>
@@ -28,7 +28,7 @@
    */
   import VLayout from '/layouts/Default';
   import VCard from '/components/Card';
-  import VTrackCard from '/components/TrackCard';
+  import VCourseCard from '/components/CourseCard';
 
   export default {
   /**
@@ -42,7 +42,7 @@
     components: {
       VLayout,
       VCard,
-      VTrackCard,
+      VCourseCard,
     },
 };
 </script>

@@ -6,6 +6,6 @@
  */
 
 export default {
-  tracks: [],
-  selectedTrack: false,
+  courses: [],
+  selectedCourse: null,
 };

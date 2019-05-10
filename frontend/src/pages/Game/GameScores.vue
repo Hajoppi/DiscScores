@@ -1,17 +1,21 @@
 <template>
   <v-layout>
-    <h1><b>{{track.name}}</b></h1>
+    <h1><b>{{course.name}}</b></h1>
     <p>{{currentDate}}</p>
     <table class="table is-narrow is-bordered" style="font-size:0.75em">
       <tr>
-        <th>Hole</th><th v-for="player in playerScores" v-text="player.name"></th>
+        <th>Hole</th><th v-for="player in playerScores" v-text="player.name" :key=player></th>
       </tr>
-      <tr v-for="(hole, index) in track.holes">
+      <tr v-for="(hole, index) in course.holes" :key=hole>
         <td>{{index + 1}} ({{hole}})</td>
-        <td v-for="player in playerScores" :style="getBackground(player.scores[index], hole)" v-text="player.scores[index]"></td>
+        <td v-for="player in playerScores" 
+            :style="getBackground(player.scores[index], hole)" 
+            v-text="player.scores[index]" 
+            :key=player>
+        </td>
       </tr>
       <tr>
-        <td>{{totalPar(track.holes)}}</td><td v-for="player in playerScores">{{totalPar(player.scores)}} ({{currentScore(player)}})</td>
+        <td>{{totalPar(course.holes)}}</td><td v-for="player in playerScores">{{totalPar(player.scores)}} ({{currentScore(player)}})</td>
       </tr>
     </table>
     <router-link class="button" @click="saveGame" :to="{ name: 'home.index' }">Save</router-link>
@@ -35,8 +39,8 @@
     name: 'game-scores',
 
     computed: {
-      track() {
-        return this.$store.state.track.selectedTrack;
+      course() {
+        return this.$store.state.course.selectedCourse;
       },
       playerScores() {
         return this.$store.state.game.players;
@@ -54,7 +58,7 @@
         return array.reduce((a, b) => a + b, 0);
       },
       currentScore(player) {
-        const holes = this.$store.state.track.selectedTrack.holes;
+        const holes = this.$store.state.course.selectedCourse.holes;
         let res = 0;
         for (let i = 0; i < holes.length; i += 1) {
           res += player.scores[i] - holes[i];

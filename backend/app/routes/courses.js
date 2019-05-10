@@ -9,6 +9,7 @@ module.exports = async (server) => {
     handler: async (request, h) => {
       try {
         const courseObj = request.payload;
+        console.log(courseObj);
         return await db.createCourse(courseObj);
       }
       catch (error) {
@@ -38,7 +39,9 @@ module.exports = async (server) => {
     handler: async(request, h) => {
       try {
         const id = request.params.id;
-        return await db.deleteCourse(id);
+        const result = await db.deleteCourse(id);
+        console.log("Deleted course with id: " + result);
+        return result;
       } catch (error) {
         console.error(error);
         throw error;

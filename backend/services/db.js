@@ -11,8 +11,8 @@ pool.on('error', (err, client) => {
 
 
 db.createCourse = async (data) => {
-  const { rows } = await pool.query("INSERT INTO courses (course_name, holes) values ($1, $2) returning id", [data.course_name, data.holes]);
-  return rows[0].id;
+  const { rows } = await pool.query("INSERT INTO courses (course_name, holes) values ($1, $2) returning id, course_name, holes", [data.course_name, data.holes]);
+  return rows[0];
 };
 
 db.getCourses = async (id) => {
@@ -23,8 +23,8 @@ db.getCourses = async (id) => {
 };
 
 db.deleteCourse = async (id) => {
-  const result = await pool.query('DELETE FROM courses where id=$1', [id]);
-  return result.rowCount;
+  const result = await pool.query('DELETE FROM courses where id=$1 returning id', [id]);
+  return result.rows[0].id;
 };
 
 db.updateCourse = async (id, data) => {

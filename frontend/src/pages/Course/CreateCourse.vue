@@ -4,9 +4,9 @@
       <div class="columns">
         <div class="column">
           <div class="field">
-            <label class="label">Track name</label>
+            <label class="label">Course name</label>
             <div class="control">
-              <input class="input" v-model="name" type="text" placeholder="Track name">
+              <input class="input" v-model="name" type="text" placeholder="Course name">
             </div>
           </div>
         </div>
@@ -20,11 +20,12 @@
 
       </div>
       <div class="columns is-multiline">
-      <div v-for="(hole, index) in holes" class="column is-one-fifth">
+      <div v-for="(hole, index) in holes" class="column is-one-fifth" :key=index>
         <div class="level is-mobile">
           <label class="label level-item">Hole {{index + 1}}</label>
           <div class="tag is-info level-item">Par {{hole}}</div>
-          <button class="button level-item" type="button" @click="decrement(index)"><i class="fa fa-minus"></i></button>
+          <button class="button level-item" type="butt
+          on" @click="decrement(index)"><i class="fa fa-minus"></i></button>
           <button class="button level-item" type="button" @click="increment(index)"><i class="fa fa-plus"></i></button>
         </div>
       </div>
@@ -55,6 +56,12 @@
      */
     name: 'home-index',
 
+    data() {
+      return {
+        name: '',
+        holes: [],
+      };
+    },
     mounted() {
       this.holes = new Array(18).fill(3, 0);
     },
@@ -81,15 +88,9 @@
         this.holes.pop();
       },
       save() {
-        this.$store.dispatch('track/save', { name: this.name, holes: this.holes });
+        console.log(`Saving ${this.name} with ${this.holes}`);
+        this.$store.dispatch('course/save', { name: this.name, holes: this.holes });
       },
-    },
-
-    data() {
-      return {
-        name: '',
-        holes: [],
-      };
     },
     /**
      * The components that the page can use.

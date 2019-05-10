@@ -54,20 +54,20 @@ export default [
     },
   },
 
-  // Track
+  // Course
   {
-    path: '/track',
-    name: 'track.index',
-    component: () => import('/pages/Track/Index.vue'),
+    path: '/course',
+    name: 'course.index',
+    component: () => import('/pages/Course/Index.vue'),
 
     meta: {
       auth: true,
     },
   },
   {
-    path: '/track/new',
-    name: 'track.new_track',
-    component: () => import('/pages/Track/CreateTrack.vue'),
+    path: '/course/new',
+    name: 'course.newCourse',
+    component: () => import('/pages/Course/CreateCourse.vue'),
 
     meta: {
       auth: true,
@@ -78,7 +78,7 @@ export default [
   {
     path: '/game/start',
     name: 'game.start_game',
-    component: () => import('/pages/Game/SelectTrack.vue'),
+    component: () => import('/pages/Game/SelectCourse.vue'),
 
     meta: {
       auth: true,

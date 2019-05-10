@@ -1,6 +1,6 @@
 <template>
   <v-layout>
-    <p v-for="game in pastGames">
+    <p v-for="game in pastGames" :key=game>
       <v-score-card :game=game>
       </v-score-card>
     </p>
