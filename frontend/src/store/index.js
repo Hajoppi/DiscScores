@@ -17,6 +17,7 @@ import auth from './modules/auth';
 import course from './modules/course';
 import player from './modules/player';
 import game from './modules/game';
+import group from './modules/group';
 
 Vue.use(Vuex);
 
@@ -32,6 +33,7 @@ export default new Vuex.Store({
     course,
     player,
     game,
+    group,
   },
 
   /**

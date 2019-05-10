@@ -31,7 +31,6 @@ export default class CourseTransformer extends Transformer {
    * @returns {Object} The transformed Course.
    */
   static send(course) {
-    console.log(course);
     return {
       course_name: course.name,
       holes: course.holes,

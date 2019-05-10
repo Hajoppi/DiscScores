@@ -7,5 +7,4 @@
 
 export default {
   players: [],
-  test: [],
 };
