@@ -34,6 +34,7 @@ export const remove = ({ commit }, group) => {
 export const join = ({ commit }, group) => {
   console.log(group);
   new Proxy('group/user').create(group).then((response) => {
+    console.log(response);
     commit(types.JOIN, response);
   });
 }

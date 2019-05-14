@@ -15,6 +15,7 @@ module.exports = async (server) => {
             group.members = res;
             return group;
           }));
+          console.log(mapped);
           return mapped;
         } catch (error) {
           console.error(error);
@@ -28,7 +29,9 @@ module.exports = async (server) => {
       handler: async (request, h) => {
         try {
           const obj = request.payload;
-          return await db.addGroup(obj.group_name);
+          const result = await db.addGroup(obj.group_name);
+          result.members = [];
+          return result;
         } catch (error) {
           console.error(error);
           throw error;

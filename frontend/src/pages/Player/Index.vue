@@ -16,7 +16,7 @@
     <div class="columns">
       <div class="column" v-for="group in groups" :key=group.id>
         <div class="label column is-half">{{group.name}}</div>
-        <div v-for="member in group.members" :key="member">{{member.username}}</div>
+        <div v-for="member in group.members" :key="member.id">{{member.username}}</div>
         <div class="column is-half">
           <a class="button is-warning" @click="removeGroup(group)">Remove</a>
           <a class="button is-info" @click="joinGroup(group)">Join</a>

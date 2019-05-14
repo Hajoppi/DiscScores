@@ -34,9 +34,11 @@ export default {
     }
   },
   [JOIN](state, { user, group }) {
+    console.log(state.groups, group, user);
+
     for (let i = 0; i < state.groups.length; i += 1) {
       if(state.groups[i].id === group) {
-        state.groups.members.push(user);
+        state.groups[i].members.push(user);
       }
     }
   },

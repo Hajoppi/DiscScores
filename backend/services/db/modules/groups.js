@@ -23,7 +23,7 @@ module.exports = async (db, pool) => {
   }
   
   db.addUserToGroup = async (user, group) => {
-    const result = await pool.query('INSERT INTO users_in_groups (users_id, groups_id) values ($1, $2) returnin users_id, groups_id', [user, group]);
+    const result = await pool.query('INSERT INTO users_in_groups (users_id, groups_id) values ($1, $2) returning users_id, groups_id', [user, group]);
     return result.rows[0];
   }
   
