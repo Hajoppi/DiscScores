@@ -31,8 +31,23 @@ export const remove = ({ commit }, group) => {
   });
 };
 
+export const join = ({ commit }, group) => {
+  console.log(group);
+  new Proxy('group/user').create(group).then((response) => {
+    commit(types.JOIN, response);
+  });
+}
+
+export const leave = ({ commit }, group) => {
+  new Proxy('group/user').destroy(group.id).then((response) => {
+    commit(types.JOIN, GroupTransformer.fetch(response));
+  });
+}
+
 export default {
   all,
   add,
   remove,
+  join,
+  leave,
 };

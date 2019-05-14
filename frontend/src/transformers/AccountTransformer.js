@@ -18,8 +18,8 @@ export default class AccountTransformer extends Transformer {
   static fetch(account) {
     return {
       email: account.email,
-      firstName: account.first_name,
-      lastName: account.last_name,
+      firstName: account.firstname,
+      lastName: account.lastname,
     };
   }
 

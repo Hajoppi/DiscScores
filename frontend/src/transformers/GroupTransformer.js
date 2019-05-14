@@ -19,6 +19,7 @@ export default class GroupTransformer extends Transformer {
     return {
       id: group.id,
       name: group.group_name,
+      members: group.members,
     };
   }
 

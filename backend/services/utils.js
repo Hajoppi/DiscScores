@@ -21,7 +21,7 @@ utils.createToken = (user) => {
   return jwt.sign(
     { id: user.id, username: user.username, scope: 'normal'},
     secret,
-    { algorithm: 'HS256', expiresIn: "1h"}
+    { algorithm: 'HS256', expiresIn: "1d"}
   );
 }
 

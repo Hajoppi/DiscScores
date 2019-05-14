@@ -13,8 +13,8 @@ module.exports = async (db, pool) => {
     return result.rows[0];
   };
     
-  db.getUserById = async (email) => {
-    const result = await pool.query('SELECT username, email, firstname, lastname FROM users WHERE id=$1', [email]);
+  db.getUserById = async (id) => {
+    const result = await pool.query('SELECT id, username, email, firstname, lastname FROM users WHERE id=$1', [id]);
     return result.rows[0];
   };
 }

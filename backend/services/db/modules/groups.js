@@ -17,17 +17,18 @@ module.exports = async (db, pool) => {
   };
   
   db.getUsersInGroup = async (id) => {
-    const result = await pool.query('SELECT users.id, users.username FROM groups, users, users_in_group WHERE users_id=users.id and groups_id=group.id and groups_id=$1', [id]);
+    console.log(id);
+    const result = await pool.query('SELECT users.id, users.username FROM groups, users, users_in_groups WHERE users_id=users.id and groups_id=groups.id and groups_id=$1', [id]);
     return result.rows;
   }
   
   db.addUserToGroup = async (user, group) => {
-    const result = await pool.query('INSERT INTO users_in_group (users_id, groups_id) values ($1, $2)', [user, group]);
-    return result.rowCount;
+    const result = await pool.query('INSERT INTO users_in_groups (users_id, groups_id) values ($1, $2) returnin users_id, groups_id', [user, group]);
+    return result.rows[0];
   }
   
   db.deleteUserFromGroup = async (user, group) => {
-    const result = await pool.query('DELETE FROM  users_in_group  WHERE users_id=$1 and groups_id=$2 ', [user, group]);
+    const result = await pool.query('DELETE FROM  users_in_groups  WHERE users_id=$1 and groups_id=$2 ', [user, group]);
     return result.rowCount;
   }
 }

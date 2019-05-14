@@ -60,11 +60,14 @@ module.exports = async (server) => {
 
   server.route({
     method: 'GET',
-    path: '/players',
+    path: '/account',
     handler: async (request, h) => {
-      const result = await db.getUser();
-      const user = request.auth.credentials;
-      return `Hello ${user.username}`;
+      try {
+        return request.auth.credentials;
+      } catch(error) {
+        console.error(error);
+        throw error;
+      }
     }
   });
 }
