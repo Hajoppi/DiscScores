@@ -6,7 +6,7 @@
  * game module.
  */
 
-
+import Proxy from '/proxies/Proxy';
 import * as types from './mutation-types';
 
 export const start = ({ commit }, data) => {
@@ -27,8 +27,13 @@ export const nextHole = ({ commit }) => {
 export const previousHole = ({ commit }) => {
   commit(types.PREVIOUS);
 };
-export const save = ({ commit }) => {
-  commit(types.SAVE);
+export const save = ({ commit, state }) => {
+  const course = state.selectedCourse.id;
+  const users = state.players;
+  console.log(course, users);
+  new Proxy('game').create({ course, users}).then(() => {
+    commit(types.SAVE);
+  });
 };
 export const remove = ({ commit }, game) => {
   commit(types.REMOVE, game);

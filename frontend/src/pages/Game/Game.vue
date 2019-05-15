@@ -16,7 +16,7 @@
           <div class="column"><a class="button" @click="increment(player)"><i class="fa fa-plus"></i></a></div>
         </div>
       </div>
-      <router-link class="button" :to="{ name: 'game.scores' }">Save</router-link>
+      <router-link class="button" :to="{ name: 'game.scores' }">Done</router-link>
     </div>
   </v-layout>
 </template>

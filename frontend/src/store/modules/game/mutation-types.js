@@ -14,6 +14,7 @@ export const NEXT = 'NEXT';
 export const PREVIOUS = 'PREVIOUS';
 export const SAVE = 'SAVE';
 export const REMOVE = 'REMOVE';
+export const ALL = 'ALL';
 export default {
   START,
   INCREMENT,
@@ -22,4 +23,5 @@ export default {
   PREVIOUS,
   SAVE,
   REMOVE,
+  ALL,
 };

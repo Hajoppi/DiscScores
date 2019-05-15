@@ -18,7 +18,7 @@
         <td>{{totalPar(course.holes)}}</td><td v-for="(player) in playerScores" :key=player.id>{{totalPar(player.scores)}} ({{currentScore(player)}})</td>
       </tr>
     </table>
-    <router-link class="button" @click="saveGame" :to="{ name: 'home.index' }">Save</router-link>
+    <button class="button" @click="saveGame" :to="{ name: 'home.index' }">Save</button>
   </v-layout>
 </template>
 
@@ -39,7 +39,7 @@
 
     computed: {
       course() {
-        return this.$store.state.course.selectedCourse;
+        return this.$store.state.game.selectedCourse;
       },
       playerScores() {
         return this.$store.state.game.players;
@@ -52,12 +52,13 @@
     methods: {
       saveGame() {
         this.$store.dispatch('game/save');
+        this.$router.push({ name: 'home.index' })
       },
       totalPar(array) {
         return array.reduce((a, b) => a + b, 0);
       },
       currentScore(player) {
-        const holes = this.$store.state.course.selectedCourse.holes;
+        const holes = this.$store.state.game.selectedCourse.holes;
         let res = 0;
         for (let i = 0; i < holes.length; i += 1) {
           res += player.scores[i] - holes[i];

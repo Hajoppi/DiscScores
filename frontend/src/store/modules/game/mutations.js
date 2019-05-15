@@ -15,10 +15,13 @@ import {
   NEXT,
   SAVE,
   REMOVE,
+  ALL,
 } from './mutation-types';
 
 export default {
-
+  [ALL](state, data) {
+    state.pastGames = data;
+  },
   [START](state, { players, course }) {
     state.currentHole = 0;
     state.players = players;
@@ -34,7 +37,7 @@ export default {
       playerScores: state.players,
       courseName: state.selectedCourse.name,
     };
-    this.state.game.pastGames.push(res);
+    state.game.pastGames.push(res);
   },
 
   [REMOVE](state, game) {
