@@ -1,4 +1,4 @@
-const jwtAuth = require('../services/auth');
+const jwtAuth = require('./services/auth');
 
 const auth = module.exports = {};
 auth.init = async (server) => {

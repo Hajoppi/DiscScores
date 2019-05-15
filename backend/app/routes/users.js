@@ -1,5 +1,5 @@
-const db = require('../../services/db/db');
-const utils = require('../../services/utils');
+const db = require('../db/db');
+const utils = require('../services/utils');
 const Bcrypt = require('bcrypt');
 const Boom = require('@hapi/boom');
 

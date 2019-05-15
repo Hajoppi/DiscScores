@@ -1,6 +1,6 @@
 const Boom = require('@hapi/boom');
 const jwt = require('jsonwebtoken');
-const db = require('./db/db');
+const db = require('../db/db');
 const internals = {};
 
 module.exports = {

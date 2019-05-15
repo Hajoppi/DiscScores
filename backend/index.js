@@ -17,6 +17,7 @@ const init = async () => {
   await require('./app/routes/users')(server);
   await require('./app/routes/courses')(server);
   await require('./app/routes/groups')(server);
+  await require('./app/router/game')(server);
   await server.start();
   console.log(`Server running at: ${server.info.uri}`);
 };
