@@ -31,7 +31,7 @@ export const save = ({ commit, state }) => {
   const course = state.selectedCourse.id;
   const users = state.players;
   console.log(course, users);
-  new Proxy('game').create({ course, users}).then(() => {
+  return new Proxy('game').create({ course, users}).then(() => {
     commit(types.SAVE);
   });
 };

@@ -37,10 +37,10 @@ create table past_games(
 
 create table users_in_past_games(
   id serial NOT null,
-  past_game_id int references past_games(id) ON DELETE CASCADE;
-  user_id int references users(id);
-  record integer[] NOT null;
-  primary key (past_game_id, user_id);
+  past_game_id int references past_games(id) ON DELETE CASCADE,
+  user_id int references users(id),
+  record integer[] NOT null,
+  primary key (past_game_id, user_id)
 );
 
 INSERT INTO courses (course_name, holes) VALUES ('puolarmaari', ARRAY[3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3]);

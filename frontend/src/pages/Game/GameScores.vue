@@ -51,8 +51,9 @@
 
     methods: {
       saveGame() {
-        this.$store.dispatch('game/save');
-        this.$router.push({ name: 'home.index' })
+        this.$store.dispatch('game/save').then(() => {
+          this.$router.push({ name: 'home.index' })
+        });
       },
       totalPar(array) {
         return array.reduce((a, b) => a + b, 0);

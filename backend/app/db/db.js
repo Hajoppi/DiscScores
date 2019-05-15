@@ -10,6 +10,7 @@ const init = () => {
   require('./modules/courses')(db, pool);
   require('./modules/users')(db, pool);
   require('./modules/groups')(db, pool);
+  require('./modules/game')(db, pool);
 }
 
 db.terminate = async () => {
