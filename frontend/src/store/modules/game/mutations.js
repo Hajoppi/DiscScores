@@ -19,11 +19,12 @@ import {
 
 export default {
 
-  [START](state, players) {
+  [START](state, { players, course }) {
     state.currentHole = 0;
     state.players = players;
+    state.selectedCourse = course;
     state.players.forEach((x) => {
-      x.scores = this.state.course.selectedCourse.holes.slice(0);
+      Vue.set(x, "scores", state.selectedCourse.holes.slice(0));
     });
   },
 
@@ -31,7 +32,7 @@ export default {
     const res = {
       date: (new Date()).toString().split(' ', 5).join(' '),
       playerScores: state.players,
-      courseName: this.state.course.selectedCourse.name,
+      courseName: state.selectedCourse.name,
     };
     this.state.game.pastGames.push(res);
   },
@@ -60,7 +61,7 @@ export default {
   },
 
   [NEXT](state) {
-    if (state.currentHole < this.state.course.selectedCourse.holes.length - 1) {
+    if (state.currentHole < state.selectedCourse.holes.length - 1) {
       state.currentHole += 1;
     }
   },

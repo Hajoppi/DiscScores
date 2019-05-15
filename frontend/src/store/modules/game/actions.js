@@ -9,8 +9,8 @@
 
 import * as types from './mutation-types';
 
-export const start = ({ commit }, player) => {
-  commit(types.START, player);
+export const start = ({ commit }, data) => {
+  commit(types.START, data);
 };
 export const increment = ({ commit }, player) => {
   commit(types.INCREMENT, player);

@@ -8,7 +8,6 @@
 
 import {
   ALL,
-  SELECT,
   SAVE,
   REMOVE,
 } from './mutation-types';
@@ -16,10 +15,6 @@ import {
 export default {
   [ALL](state, courses) {
     state.courses = courses;
-  },
-
-  [SELECT](state, index) {
-    state.selectedCourse = state.courses[index];
   },
 
   [SAVE](state, course) {

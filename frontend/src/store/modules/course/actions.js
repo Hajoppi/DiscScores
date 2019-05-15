@@ -19,10 +19,6 @@ export const all = ({ commit }) => {
   });
 };
 
-export const select = ({ commit }, index) => {
-  commit(types.SELECT, index);
-};
-
 export const save = ({ commit }, course) => {
   new CourseProxy().create(CourseTransformer.send(course)).then((response) => {
     commit(types.SAVE, CourseTransformer.fetch(response));
@@ -42,7 +38,6 @@ export const remove = ({ commit }, course) => {
 
 export default {
   all,
-  select,
   save,
   remove,
 };

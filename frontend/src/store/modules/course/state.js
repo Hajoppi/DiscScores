@@ -7,5 +7,4 @@
 
 export default {
   courses: [],
-  selectedCourse: null,
 };

@@ -7,6 +7,6 @@
 
 export default {
   currentHole: 0,
+  selectedCourse: null,
   players: [],
-  pastGames: [],
 };

@@ -3,14 +3,17 @@
     <div class="container">
       <div class="columns">
         <div class="column" v-for="group in groups" :key=group.id>
-          <span class="label">{{player.name}}</span>
-          <input class="is-checkradio is-block is-success" :value=player type="checkbox" :id="player.name" v-model="checkedNames" :name=player.name>
+          <div class="label">{{group.name}}</div>
+          <div v-for="player in group.members" :key=player.username>
+            <span class="">{{player.username}}</span>
+            <input class="is-checkradio is-block is-success" :value=player type="checkbox" :id="player.username" v-model="checkedNames" :name=player.username>
+          </div>
         </div>
       </div>
       <div class="columns is-multiline is-mobile">
-      <div class="column is-quarter" v-for="(course, index) in courses" :key=index>
+      <div class="column is-quarter" v-for="course in courses" :key=course.id>
         <div class="label">{{course.name}}</div>
-        <td><a class="button" @click.prevent="select(index)">Select</a></td>
+        <td><a class="button" @click.prevent="select(course)">Select</a></td>
       </div>
       </div>
     </div>
@@ -34,6 +37,11 @@
      */
     name: 'select-course',
 
+    mounted() {
+      this.$store.dispatch('group/all');
+      this.$store.dispatch('course/all');
+    },
+
     computed: {
       courses() {
         return this.$store.state.course.courses;
@@ -47,9 +55,8 @@
     },
 
     methods: {
-      select(index) {
-        this.$store.dispatch('course/select', index);
-        this.$store.dispatch('game/start', this.checkedNames);
+      select(course) {
+        this.$store.dispatch('game/start', { players: this.checkedNames, course });
         this.$router.push({
           name: 'game.game',
       });

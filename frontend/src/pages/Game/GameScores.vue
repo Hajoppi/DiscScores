@@ -4,7 +4,7 @@
     <p>{{currentDate}}</p>
     <table class="table is-narrow is-bordered" style="font-size:0.75em">
       <tr>
-        <th>Hole</th><th v-for="player in playerScores" v-text="player.name" :key=player.id></th>
+        <th>Hole</th><th v-for="player in playerScores" v-text="player.username" :key=player.id></th>
       </tr>
       <tr v-for="(hole, index) in course.holes" :key=index>
         <td>{{index + 1}} ({{hole}})</td>
@@ -15,7 +15,7 @@
         </td>
       </tr>
       <tr>
-        <!--<td>{{totalPar(course.holes)}}</td><td v-for="(player) in playerScores" :key=player>{{totalPar(player.scores)}} ({{currentScore(player)}})</td>-->
+        <td>{{totalPar(course.holes)}}</td><td v-for="(player) in playerScores" :key=player.id>{{totalPar(player.scores)}} ({{currentScore(player)}})</td>
       </tr>
     </table>
     <router-link class="button" @click="saveGame" :to="{ name: 'home.index' }">Save</router-link>
