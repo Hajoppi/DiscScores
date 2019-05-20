@@ -14,7 +14,7 @@ import * as types from './mutation-types';
 
 
 export const all = ({ commit }) => {
-  new CourseProxy().all().then((response) => {
+  return new CourseProxy().all().then((response) => {
     commit(types.ALL, CourseTransformer.fetchCollection(response));
   });
 };

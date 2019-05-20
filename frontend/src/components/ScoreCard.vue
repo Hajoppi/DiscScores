@@ -1,18 +1,18 @@
 <template>
   <div>
-    <h1><b>{{track.name}}</b></h1>
+    <h1><b>{{course.name}}</b></h1>
     <p>{{currentDate}}<Button type="button" @click="removeGame()" class="button">Remove</Button></p>
 
     <table class="table is-narrow is-bordered" style="font-size:0.75em">
       <tr>
-        <th>Hole</th><th v-for="player in playerScores" v-text="player.name"></th>
+        <th>Hole</th><th v-for="player in playerScores" v-text="player.username" :key=player.username></th>
       </tr>
-      <tr v-for="(hole, index) in track.holes">
+      <tr v-for="(hole, index) in course.holes" :key=index>
         <td>{{index + 1}} ({{hole}})</td>
-        <td v-for="player in playerScores" :style="getBackground(player.scores[index], hole)" v-text="player.scores[index]"></td>
+        <td v-for="player in playerScores" :style="getBackground(player.scores[index], hole)" v-text="player.scores[index]" :key=player.username></td>
       </tr>
       <tr>
-        <td>{{totalPar(track.holes)}}</td><td v-for="player in playerScores">{{totalPar(player.scores)}} ({{currentScore(player)}})</td>
+        <td>{{totalPar(course.holes)}}</td><td v-for="player in playerScores" :key=player.username>{{totalPar(player.scores)}} ({{currentScore(player)}})</td>
       </tr>
     </table>
 </div>
@@ -54,14 +54,10 @@
      * The computed properties that the component can use.
      */
     computed: {
-      track() {
-        const tracks = this.$store.state.track.tracks;
-        for (let i = 0; i < tracks.length; i += 1) {
-          if (tracks[i].name === this.game.trackName) {
-            return tracks[i];
-          }
-        }
-        return {};
+      course() {
+        const courseId = this.game.selectedCourse;
+        console.log(this.$store.getters["course/get"](courseId));
+        return this.$store.getters["course/get"](courseId);
       },
       total() {
         return this.holes.length;
@@ -88,10 +84,12 @@
 
     methods: {
       totalPar(array) {
+        if(array === undefined) return 0;
         return array.reduce((a, b) => a + b, 0);
       },
       currentScore(player) {
-        const holes = this.$store.state.track.selectedTrack.holes;
+        const holes = this.course.holes;
+        if(holes === undefined) return 0;
         let res = 0;
         for (let i = 0; i < holes.length; i += 1) {
           res += player.scores[i] - holes[i];

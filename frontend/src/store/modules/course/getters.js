@@ -6,4 +6,13 @@
  * course module.
  */
 
-export default {};
+export default {
+    get: (state) => (id) => {
+        for(let i = 0; i < state.courses.length; i += 1) {
+            if(state.courses[i].id === id) {
+                return state.courses[i];
+            }
+        }
+        return 0;
+    },
+};

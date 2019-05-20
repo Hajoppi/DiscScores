@@ -24,21 +24,21 @@ create table groups(
 
 create table users_in_groups(
   id serial NOT null,
-  users_id int references users(id) ON DELETE CASCADE,
-  groups_id int references groups(id) ON DELETE CASCADE,
+  users_id int NOT NULL references users(id) ON DELETE CASCADE,
+  groups_id int NOT NULL references groups(id) ON DELETE CASCADE,
   primary key (users_id, groups_id)
 );
 
 create table past_games(
   id serial NOT null primary key,
-  courses_id int references courses(id),
+  courses_id int NOT NULL references courses(id),
   played timestamp with time zone not null default now()
 );
 
 create table users_in_past_games(
   id serial NOT null,
-  past_game_id int references past_games(id) ON DELETE CASCADE,
-  user_id int references users(id),
+  past_game_id int NOT NULL references past_games(id) ON DELETE CASCADE,
+  user_id int NOT NULL references users(id),
   record integer[] NOT null,
   primary key (past_game_id, user_id)
 );

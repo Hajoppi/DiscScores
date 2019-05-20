@@ -17,9 +17,10 @@ export default class GameTransformer extends Transformer {
    */
   static fetch(game) {
     return {
-      courseName: game.courseName,
-      playerScores: game.playerScores,
+      selectedCourse: game.selectedcourse,
+      playerScores: game.playerscores,
       date: game.played,
+      id: game.past_game_id,
     };
   }
 

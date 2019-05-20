@@ -8,7 +8,7 @@
 
 import Proxy from '/proxies/Proxy';
 import * as types from './mutation-types';
-
+import GameTransformer from '/transformers/GameTransformer';
 export const start = ({ commit }, data) => {
   commit(types.START, data);
 };
@@ -35,6 +35,13 @@ export const save = ({ commit, state }) => {
     commit(types.SAVE);
   });
 };
+
+export const all = ({ commit }) => {
+  return new Proxy('game').all().then((response) => {
+    commit(types.ALL, GameTransformer.fetchCollection(response));
+  });
+};
+
 export const remove = ({ commit }, game) => {
   commit(types.REMOVE, game);
 };
@@ -47,4 +54,5 @@ export default {
   previousHole,
   save,
   remove,
+  all,
 };

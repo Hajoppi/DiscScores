@@ -1,6 +1,6 @@
 <template>
   <v-layout>
-    <p v-for="game in pastGames" :key=game>
+    <p v-for="game in pastGames" :key=game.id>
       <v-score-card :game=game>
       </v-score-card>
     </p>
@@ -24,13 +24,16 @@
      */
     name: 'past-games',
 
+    mounted() {
+      this.$store.dispatch('course/all').then(()=>{
+        this.$store.dispatch('game/all');
+      });
+    },
+
     computed: {
       pastGames() {
         return this.$store.state.game.pastGames;
       },
-    },
-
-    methods: {
     },
 
     /**

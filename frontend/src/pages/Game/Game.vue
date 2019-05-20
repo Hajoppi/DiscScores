@@ -42,7 +42,8 @@
         return this.$store.state.game.currentHole;
       },
       course() {
-        return this.$store.state.game.selectedCourse;
+        const courseId = this.$store.state.game.selectedCourse;
+        return this.$store.getters["course/get"](courseId);
       },
       playerScores() {
         return this.$store.state.game.players;
