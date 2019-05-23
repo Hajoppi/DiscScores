@@ -5,7 +5,7 @@ module.exports = async (server) => {
   server.route([
     {
       method: 'GET',
-      path: '/groups/{id?}',
+      path: '/api/groups/{id?}',
       handler: async (request, h) => {
         try {
           const id = request.params.id;
@@ -25,7 +25,7 @@ module.exports = async (server) => {
     },
     {
       method: 'POST',
-      path: '/groups',
+      path: '/api/groups',
       handler: async (request, h) => {
         try {
           const obj = request.payload;
@@ -40,7 +40,7 @@ module.exports = async (server) => {
     },
     {
       method: 'DELETE',
-      path: '/groups/{id}',
+      path: '/api/groups/{id}',
       handler: async (request, h) => {
         const id = request.params.id;
         try {
@@ -53,7 +53,7 @@ module.exports = async (server) => {
     },
     {
       method: 'POST',
-      path: '/group/user',
+      path: '/api/group/user',
       handler: async (request, h) => {
         const id = request.payload.id;
         console.log(request.payload);
@@ -69,7 +69,7 @@ module.exports = async (server) => {
     },
     {
       method: 'DELETE',
-      path: '/group/user/{id}',
+      path: '/api/group/user/{id}',
       handler: async (request, h) => {
         const id = request.params.id;
         const player = request.auth.credentials.id;

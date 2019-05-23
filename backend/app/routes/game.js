@@ -4,7 +4,7 @@ module.exports = async (server) => {
   server.route([
       {
         method: 'POST',
-        path: '/game',
+        path: '/api/game',
         handler: async (request, h) => {
           const payload = request.payload;
           try {
@@ -18,7 +18,7 @@ module.exports = async (server) => {
       },
       {
         method: 'GET',
-        path: '/game',
+        path: '/api/game',
         handler: async (request, h) => {
           const user = request.auth.credentials.id;
           try {

@@ -6,7 +6,7 @@ const Boom = require('@hapi/boom');
 module.exports = async (server) => {
   server.route({
     method: 'POST',
-    path: '/login',
+    path: '/api/login',
     options: {
       auth: false,
     },
@@ -34,7 +34,7 @@ module.exports = async (server) => {
 
   server.route({
     method: 'POST',
-    path: '/register',
+    path: '/api/register',
     options: {
       auth: false,
     },
@@ -60,7 +60,7 @@ module.exports = async (server) => {
 
   server.route({
     method: 'GET',
-    path: '/account',
+    path: '/api/account',
     handler: async (request, h) => {
       try {
         return request.auth.credentials;
