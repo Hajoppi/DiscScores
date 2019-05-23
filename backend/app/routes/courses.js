@@ -5,7 +5,7 @@ module.exports = async (server) => {
   // Create new course
   server.route({
     method: 'POST',
-    path: '/courses',
+    path: '/api/courses',
     handler: async (request, h) => {
       try {
         const courseObj = request.payload;
@@ -22,7 +22,7 @@ module.exports = async (server) => {
   // Fetch the signups
   server.route({
     method: 'GET',
-    path: '/courses/{id?}',
+    path: '/api/courses/{id?}',
     handler: async (request, h) => {
       try {
         return await db.getCourses(request.params.id);
@@ -35,7 +35,7 @@ module.exports = async (server) => {
   
   server.route({
     method: 'DELETE',
-    path: '/courses/{id}',
+    path: '/api/courses/{id}',
     handler: async(request, h) => {
       try {
         const id = request.params.id;
@@ -51,7 +51,7 @@ module.exports = async (server) => {
   
   server.route({
     method: 'PUT',
-    path: '/courses/{id}',
+    path: '/api/courses/{id}',
     handler: async(request, h) => {
       try {
         const courseObj = request.payload;
