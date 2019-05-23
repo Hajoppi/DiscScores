@@ -6,86 +6,87 @@
       </span>
       <div slot="body">
         <form @submit.prevent="register(user)">
-          <div class="form-group">
-            <div class="input-group">
-              <div class="input-group-addon">
-                <i class="fa fa-user fa-fw"></i>
-              </div>
+          <div class="field">
+            <div class="control has-icons-left">
               <input
                 v-model="user.firstName"
                 type="text"
                 placeholder="First name"
-                class="form-control"
+                class="input"
               >
+              <span class="icon is-small is-left">
+                <i class="fa fa-user fa-fw"></i>
+              </span>
             </div>
           </div>
-          <div class="form-group">
-            <div class="input-group">
-              <div class="input-group-addon">
-                <i class="fa fa-user fa-fw"></i>
-              </div>
+          <div class="field">
+            <div class="control has-icons-left">
               <input
                 v-model="user.lastName"
                 type="text"
                 placeholder="Last name"
-                class="form-control"
+                class="input"
               >
+              <span class="icon is-small is-left">
+                <i class="fa fa-user fa-fw"></i>
+              </span>
             </div>
           </div>
-          <div class="form-group">
-            <div class="input-group">
-              <div class="input-group-addon">
-                <i class="fa fa-user fa-fw"></i>
-              </div>
+          <div class="field">
+            <div class="control has-icons-left">
               <input
                 v-model="user.username"
                 type="text"
                 placeholder="Username"
-                class="form-control"
+                class="input"
               >
+              <span class="icon is-small is-left">
+                <i class="fa fa-user fa-fw"></i>
+              </span>
             </div>
           </div>
-          <div class="form-group">
-            <div class="input-group">
-              <div class="input-group-addon">
-                <i class="fa fa-envelope fa-fw"></i>
-              </div>
+          <div class="field">
+            <div class="control has-icons-left">
               <input
                 v-model="user.email"
-                type="email"
+                type="text"
                 placeholder="Email"
-                class="form-control"
+                class="input"
               >
+              <span class="icon is-small is-left">
+                <i class="fa fa-envelope fa-fw"></i>
+              </span>
             </div>
           </div>
-          <div class="form-group">
-            <div class="input-group">
-              <div class="input-group-addon">
-                <i class="fa fa-lock fa-fw"></i>
-              </div>
+          <div class="field">
+            <div class="control has-icons-left">
               <input
                 v-model="user.password"
                 type="password"
                 placeholder="Password"
-                class="form-control"
+                class="input"
               >
+              <span class="icon is-small is-left">
+                <i class="fa fa-lock fa-fw"></i>
+              </span>
             </div>
           </div>
-          <div class="form-group">
-            <div class="input-group">
-              <div class="input-group-addon">
-                <i class="fa fa-lock fa-fw"></i>
-              </div>
+
+          <div class="field">
+            <div class="control has-icons-left">
               <input
                 v-model="user.passwordConfirm"
                 type="password"
                 placeholder="Confirm password"
-                class="form-control"
+                class="input"
               >
+              <span class="icon is-small is-left">
+                <i class="fa fa-lock fa-fw"></i>
+              </span>
             </div>
           </div>
-          <div class="form-group">
-            <button class="btn btn-outline-primary">
+          <div class="field">
+            <button class="button">
               Register
             </button>
           </div>

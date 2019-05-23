@@ -1,64 +1,13 @@
 <template>
   <div>
-    <nav class="navbar">
-      <router-link
-        class="navbar-brand"
-        :to="{ name: 'home.index' }"
-      >
-        Disc Scores
-      </router-link>
-
-      <button
-        class="navbar-toggler"
-        type="button"
-        @click="toggleMenu"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div
-        class="collapse navbar-collapse"
-        :class="{ show : menuCollapsed}"
-      >
-        <ul class="navbar-nav mr-auto">
-          <router-link
-            :to="{ name: 'home.index' }"
-            active-class="active"
-            class="navbar-item"
-            tag="li"
-          >
-            <a class="nav-link">
-              Home
-            </a>
-          </router-link>
-          <router-link
-            :to="{ name: 'account.index' }"
-            active-class="active"
-            class="navbar-item"
-            tag="li"
-          >
-            <a class="nav-link">
-              Account
-            </a>
-          </router-link>
-        </ul>
-        <span class="navbar-text">
-          <a
-            class="button"
-            href="#"
-            @click.prevent="logout"
-          >
-            <i class="fa fa-sign-out"></i>
-          </a>
-        </span>
+    <div class="container">
+      <div>
+        <router-link class="button" :to="{name: 'home.index'}"> Home </router-link>
       </div>
-    </nav>
-
-    <div class="container pt-4">
-          <!-- Content will be placed here -->
+      <div class="section">
           <slot></slot>
+      </div>
     </div>
-
   </div>
 </template>
 
@@ -97,9 +46,7 @@
       /**
        * Will log the user out.
        */
-      logout() {
-        this.$store.dispatch('auth/logout');
-      },
+
 
       /**
        * Will toggle the menu.
