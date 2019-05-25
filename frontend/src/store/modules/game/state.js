@@ -8,6 +8,7 @@
 export default {
   currentHole: 0,
   selectedCourse: null,
+  holeCount: 0,
   players: [],
   pastGames:[],
 };

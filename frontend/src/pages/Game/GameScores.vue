@@ -39,7 +39,8 @@
 
     computed: {
       course() {
-        return this.$store.state.game.selectedCourse;
+        const courseId = this.$store.state.game.selectedCourse;
+        return this.$store.getters["course/get"](courseId);
       },
       playerScores() {
         return this.$store.state.game.players;
@@ -59,7 +60,7 @@
         return array.reduce((a, b) => a + b, 0);
       },
       currentScore(player) {
-        const holes = this.$store.state.game.selectedCourse.holes;
+        const holes = this.course.holes;
         let res = 0;
         for (let i = 0; i < holes.length; i += 1) {
           res += player.scores[i] - holes[i];

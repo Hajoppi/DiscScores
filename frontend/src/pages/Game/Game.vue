@@ -36,14 +36,18 @@
      * The name of the page.
      */
     name: 'game',
-
+    beforeCreate() {
+      this.$store.dispatch('course/all');
+    },
     computed: {
       currentHole() {
         return this.$store.state.game.currentHole;
       },
       course() {
         const courseId = this.$store.state.game.selectedCourse;
-        return this.$store.getters["course/get"](courseId);
+        const course = this.$store.getters["course/get"](courseId);
+        if (course === 0) return {holes:[], name: ""};
+        return course;
       },
       playerScores() {
         return this.$store.state.game.players;
@@ -70,7 +74,7 @@
         return player.scores[this.currentHole];
       },
       currentScore(player) {
-        const holes = this.$store.state.game.selectedCourse.holes;
+        const holes = this.course.holes;
         let res = 0;
         for (let i = 0; i < holes.length; i += 1) {
           res += player.scores[i] - holes[i];

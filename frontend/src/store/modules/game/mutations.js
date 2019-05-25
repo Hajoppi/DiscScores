@@ -26,6 +26,7 @@ export default {
     state.currentHole = 0;
     state.players = players;
     state.selectedCourse = course.id;
+    state.holeCount = course.holes.length;
     state.players.forEach((x) => {
       Vue.set(x, "scores", course.holes.slice(0));
     });
@@ -37,7 +38,7 @@ export default {
       playerScores: state.players,
       courseName: state.selectedCourse.name,
     };
-    state.game.pastGames.push(res);
+    state.pastGames.push(res);
   },
 
   [REMOVE](state, game) {
@@ -64,7 +65,7 @@ export default {
   },
 
   [NEXT](state) {
-    if (state.currentHole < state.selectedCourse.holes.length - 1) {
+    if (state.currentHole < state.holeCount - 1) {
       state.currentHole += 1;
     }
   },

@@ -28,7 +28,7 @@ export const previousHole = ({ commit }) => {
   commit(types.PREVIOUS);
 };
 export const save = ({ commit, state }) => {
-  const course = state.selectedCourse.id;
+  const course = state.selectedCourse;
   const users = state.players;
   console.log(course, users);
   return new Proxy('game').create({ course, users}).then(() => {
