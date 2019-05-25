@@ -13,7 +13,7 @@
       <div class="columns is-multiline is-mobile">
       <div class="column is-quarter" v-for="course in courses" :key=course.id>
         <div class="label">{{course.name}}</div>
-        <td><a class="button" @click.prevent="select(course.id)">Select</a></td>
+        <td><a class="button" @click.prevent="select(course)">Select</a></td>
       </div>
       </div>
     </div>

@@ -25,9 +25,9 @@ export default {
   [START](state, { players, course }) {
     state.currentHole = 0;
     state.players = players;
-    state.selectedCourse = course;
+    state.selectedCourse = course.id;
     state.players.forEach((x) => {
-      Vue.set(x, "scores", state.selectedCourse.holes.slice(0));
+      Vue.set(x, "scores", course.holes.slice(0));
     });
   },
 
