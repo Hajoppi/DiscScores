@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1><b>{{course.name}}</b></h1>
-    <p>{{currentDate}}<Button type="button" @click="removeGame()" class="button">Remove</Button></p>
+    <p>{{currentDate}}></p>
 
     <table class="table is-narrow is-bordered" style="font-size:0.75em">
       <tr>
