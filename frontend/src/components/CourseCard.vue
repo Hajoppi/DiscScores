@@ -2,9 +2,6 @@
   <div class="columns">
     <div class="label column is-one-third">{{course.name}}</div>
     <div class="label column is-one-third">{{total}} Holes</div>
-    <div class="column is-one-third">
-      <a class="button is-warning" @click="removeCourse(course)">Remove</a>
-    </div>
   </div>
 </template>
 
