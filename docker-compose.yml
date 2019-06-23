@@ -25,7 +25,7 @@ services:
   db:
     image: postgres:latest
     environment: 
-      - POSTGRES_DB=tpjdb
+      - POSTGRES_DB=dsdb
       - POSTGRES_PASSWORD=lorem
     volumes: 
       - ./backend/schema.sql:/docker-entrypoint-initdb.d/schema.sql
