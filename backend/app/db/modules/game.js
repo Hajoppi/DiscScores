@@ -27,7 +27,7 @@ module.exports = async (db, pool) => {
   };
 
   db.getPastGames = async (user) => {
-    const result = await pool.query("SELECT past_game_id, p.courses_id as selectedCourse, p.played, json_agg(json_build_object('username', username, 'scores', record))::jsonb as playerScores FROM users_in_past_games, past_games as p, users WHERE p.id=past_game_id and users.id=user_id group by past_game_id, p.courses_id, p.played");
+    const result = await pool.query("SELECT past_game_id, p.courses_id as selectedCourse, p.played, json_agg(json_build_object('username', username, 'scores', record))::jsonb as playerScores FROM users_in_past_games, past_games as p, users WHERE p.id=past_game_id and users.id=user_id group by past_game_id, p.courses_id, p.played ORDER BY p.played DESC");
     return result.rows;
   }
 };

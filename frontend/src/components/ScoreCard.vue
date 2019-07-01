@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1><b>{{course.name}}</b></h1>
-    <p>{{currentDate}}></p>
+    <p>{{currentDate}}</p>
 
     <table class="table is-narrow is-bordered" style="font-size:0.75em">
       <tr>
@@ -49,7 +49,6 @@
       game: null,
     },
 
-
     /**
      * The computed properties that the component can use.
      */
@@ -66,6 +65,7 @@
         return this.game.playerScores;
       },
       currentDate() {
+        if(this.game.date) return this.game.date.split(' ', 5).join(' ');
         return (new Date()).toString().split(' ', 5).join(' ');
       },
 
