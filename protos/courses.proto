@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package ds;
+
+message Hole {
+    int32 par = 1;
+}
+message Course {
+    string id = 1;
+    string name = 2;
+    repeated Hole holes = 3;
+}
+message BatchCourses {
+    repeated Course courses = 1;
+}
+
+service Courses {
+    rpc GetHoles (Course) returns (BatchCourses);
+}

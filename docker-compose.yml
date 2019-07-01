@@ -6,7 +6,7 @@ services:
     volumes:
       - ./frontend:/usr/src/app
     working_dir: /usr/src/app
-    command: npm start
+    command: npm run dev
     ports:
       - 3000:3000
       - 45253:45253
@@ -18,6 +18,12 @@ services:
     working_dir: /usr/src/app
     environment: 
       - NODE_URI=0.0.0.0
+      - PGHOST=discscores_db_1 
+      - PGUSER=postgres
+      - PGPASSWORD=lorem
+      - PGDATABASE=dsdb
+      - GPORT=5432
+      - SECRET_KEY=lol
     command: npm start
     ports:
       - 3001:3001
